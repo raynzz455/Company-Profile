@@ -6,7 +6,7 @@
   <head>
 
     
-    <body class="font-Kanit bg-gray-100 text-gray-800">
+    <body class="bg-gray-100 text-gray-800">
 
       <div class="p-8">
           <h1 class="text-4xl font-bold mb-4">Testimoni</h1>

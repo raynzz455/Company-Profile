@@ -6,8 +6,8 @@
 
        <!--  Header Content  -->
       <div class=" mx-auto justify-center text-center p-10 border">
-          <h1 class="text-4xl font-bold font-ribetin">Portofolio</h1>
-          <p class="m-5 font-"> Dibawah ini adalah lampiran project portofolio yang kami telah kerjakan.
+          <h1 class="text-4xl font-bold ">Portofolio</h1>
+          <p class="m-5 font-sm"> Dibawah ini adalah lampiran project portofolio yang kami telah kerjakan.
           </p>
       </div>
 
