@@ -12,13 +12,14 @@
          .hover-button svg path:nth-child(1) {
           stroke-dasharray: 100%;
           stroke-dashoffset: 0;  /* Nilai awal: 0 */
-          transition: stroke-dashoffset 0.5s ease-in-out;
+          transition: stroke-dashoffset 0.3s ease-in-out;
           position: absolute;
           }
 
           .hover-button:hover svg path:nth-child(1) {
           stroke-dashoffset: 100%;  /* Nilai akhir: 100% */
           }
+          
           
           </style>
 
