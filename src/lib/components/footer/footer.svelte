@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <script>
     import { onMount, onDestroy } from 'svelte';
 
@@ -370,5 +370,8 @@
         </div>
     </footer>
 </main>
-=======
->>>>>>> refs/remotes/origin/main
+
+
+<slot>
+
+</slot>
