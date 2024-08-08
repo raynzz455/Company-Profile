@@ -17,7 +17,7 @@
           }
 
           .hover-button:hover svg path:nth-child(1) {
-          stroke-dashoffset: 100%;  /* Nilai akhir: 100% */
+          stroke-dashoffset: 100%;
           }
           
           
@@ -103,7 +103,7 @@
                                         
                                         <button class="hover-button flex align-items-center text-white rounded-3xl px-5 py-3 bg-[#486c32] hover:bg-[#8ca33c] ml-5">
                                               <div class="relative flex flex-wrap">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.4" stroke="currentColor" class="icon size-6 hover:stroke-current">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="icon size-6 hover:stroke-current">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                                     </svg>
                                               </div>
@@ -125,7 +125,8 @@
                                   </div>
                                   
                                   
-                      </div>      
+                      </div>    
+                      
 
                       </div>
           </div>
