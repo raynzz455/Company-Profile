@@ -24,11 +24,11 @@
           </style>
 
 
-                <div class="main-content mx-auto justify-center mb-[30px] ">
+                <div class="main-content mx-auto w-full justify-center my-[4rem] ">
 
                       <!--  Header Content  -->
                       <div class=" mx-auto justify-center text-center p-10">
-                            <h1 class="text-4xl font-bold">Layanan Kami</h1>
+                            <h1 class="text-4xl kanit-extrabold">Layanan Kami</h1>
                             <p class="mt-5 mb-5">Kami menyediakan jasa desain grafis dan strategis periklanan untuk  <br/>
                             memikat calon pembeli anda. Cari Tahu layanan yang kami tawarkan kepada anda disini:
                             </p>
