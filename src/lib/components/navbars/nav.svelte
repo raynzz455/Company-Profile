@@ -3,7 +3,7 @@
     import icon from '$lib/images/logo-icon.png';
   </script>
   
-  <div class=" bg-transparent mx-auto justify-items-center h-30">
+  <div class=" bg-transparent mx-auto w-full justify-items-center h-[100px]">
       <div class="mx-auto max-w-8xl w-3/4 px-2 sm:px-6 lg:px-8">
           <div class="relative flex items-center justify-center"> <!-- Perubahan pada kelas ini -->
               <div class="mr-auto ml-10">

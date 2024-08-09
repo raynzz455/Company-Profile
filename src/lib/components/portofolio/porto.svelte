@@ -117,7 +117,7 @@ transition: display 0.3s ease-in-out;
  </div>
     
     <!--Navbar-->
-    <div class="w-3/4 h-auto mx-auto "> 
+    <div class="w-3/4 h-auto mx-auto border"> 
     <div class="mx-auto justify-center h-[13vh]">
         <div class="relative mx-auto w-3/4 h-[8vh] mt-[5vh] flex flex-wrap">
                 <button class="button active active-button" id="button1">

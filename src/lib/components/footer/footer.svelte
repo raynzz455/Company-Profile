@@ -297,6 +297,7 @@
     <div class="footer-logo">
       <img src="{terserah}" alt="Company Logo">
     </div>
+<<<<<<< HEAD
     <div class="footer-links">
       <a href="#home">Home</a>
       <a href="#about">About Us</a>
@@ -322,3 +323,7 @@
     </div>
   </footer>
   
+=======
+</footer>
+</main>
+>>>>>>> 1e40827fc5d3c4cac9649966fba7dee3bbf62dc9
