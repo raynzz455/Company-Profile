@@ -1,454 +1,324 @@
-
 <script>
-     import icon from "$lib/images/logo-icon.png";
-    import { onMount, onDestroy } from 'svelte';
-
-    const testimonials = [
-        { name: "Nama Lengkap 1", text: "This is a wider card with supporting text below as a natural lead-in to additional content." },
-        { name: "Nama Lengkap 2", text: "This is a wider card with supporting text below as a natural lead-in to additional content." },
-        { name: "Nama Lengkap 3", text: "This is a wider card with supporting text below as a natural lead-in to additional content." }
-    ];
-
-    const slides = [...testimonials, ...testimonials];
-    let index = testimonials.length;
-    let autoSlideInterval;
-    let startX, currentX, isDragging = false;
-    const slideWidth = 100;
-
+    import terserah from "$lib/images/logo-icon.png"
+    import { onMount } from 'svelte';
+    import Splide from '@splidejs/splide';
+    import '@splidejs/splide/dist/css/splide.min.css';
+    
+    let splide;
+  
     onMount(() => {
-        const wrapper = document.querySelector('.carousel-wrapper');
-        wrapper.addEventListener('mousedown', onMouseDown);
-        wrapper.addEventListener('touchstart', onMouseDown, { passive: true });
-
-        autoSlideInterval = setInterval(nextSlide, 3000);
+      splide = new Splide('.splide', {
+        type       : 'loop',
+        perPage    : 1,
+        perMove    : 1,
+        autoplay   : true,
+        pagination : true,
+        arrows     : true,
+      }).mount();
     });
-
-    onDestroy(() => {
-        clearInterval(autoSlideInterval);
-    });
-
-    function updateSlide() {
-        const wrapper = document.querySelector('.carousel-wrapper');
-        wrapper.style.transform = `translateX(-${index * slideWidth}%)`;
-        updateDots();
+  </script>
+  
+  <style>
+    .splide {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-
-    function nextSlide() {
-        index = (index + 1) % slides.length;
-        updateSlide();
-
-        if (index === testimonials.length) {
-            setTimeout(() => {
-                const wrapper = document.querySelector('.carousel-wrapper');
-                wrapper.style.transition = 'none';
-                wrapper.style.transform = `translateX(-${index * slideWidth}%)`;
-                setTimeout(() => {
-                    wrapper.style.transition = 'transform 0.5s ease-in-out';
-                }, 50);
-            }, 500);
-        }
+  
+    .splide__slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin: 0 15px;
     }
-
-    function prevSlide() {
-        index = (index - 1 + slides.length) % slides.length;
-        updateSlide();
-
-        if (index === slides.length - 1) {
-            setTimeout(() => {
-                const wrapper = document.querySelector('.carousel-wrapper');
-                wrapper.style.transition = 'none';
-                wrapper.style.transform = `translateX(-${(slides.length - testimonials.length) * slideWidth}%)`;
-                setTimeout(() => {
-                    wrapper.style.transition = 'transform 0.5s ease-in-out';
-                }, 50);
-            }, 500);
-        }
+  
+    .splide__pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
     }
-
-    function updateDots() {
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === (index % testimonials.length));
-        });
+  
+    .splide__pagination__page {
+      width: 12px;
+      height: 4px;
+      margin: 0 4px;
+      background: #f28928;
+      border-radius: 2px;
+      opacity: 0.5;
+      transition: opacity 0.3s, transform 0.3s;
     }
-
-    function onMouseDown(event) {
-        clearInterval(autoSlideInterval);
-        startX = event.clientX || event.touches[0].clientX;
-        isDragging = true;
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', onMouseUp);
-        document.addEventListener('touchmove', onMouseMove, { passive: true });
-        document.addEventListener('touchend', onMouseUp);
+  
+    .splide__pagination__page.is-active {
+      opacity: 1;
+      transform: scaleX(1.5);
     }
-
-    function onMouseMove(event) {
-        if (isDragging) {
-            currentX = event.clientX || event.touches[0].clientX;
-            const diffX = startX - currentX;
-            document.querySelector('.carousel-wrapper').style.transition = 'none';
-            document.querySelector('.carousel-wrapper').style.transform = `translateX(-${(index * slideWidth) + (diffX / window.innerWidth * 100)}%)`;
-        }
+  
+    .testimonial-container {
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+      padding: 20px;
     }
-
-    function onMouseUp() {
-        if (isDragging) {
-            const diffX = startX - currentX;
-            if (diffX > 100) {
-                nextSlide();
-            } else if (diffX < -100) {
-                prevSlide();
-            }
-            isDragging = false;
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
-            document.removeEventListener('touchmove', onMouseMove);
-            document.removeEventListener('touchend', onMouseUp);
-            document.querySelector('.carousel-wrapper').style.transition = 'transform 0.5s ease-in-out';
-
-            autoSlideInterval = setInterval(nextSlide, 3000);
-        }
+  
+    .testimonial-heading {
+      font-size: 37px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
     }
-</script>
-
-<style>
-    /* Background gradient */
-    .background-gradient {
-        background: linear-gradient(135deg, rgba(254, 180, 95, 0.6) 0%, rgba(162, 246, 165, 0.6) 100%);
-    }
-    
-    .carousel-wrapper {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-        width: 100%;
-        cursor: grab;
-    }
-    
-    .carousel-wrapper:active {
-        cursor: grabbing;
-    }
-    
-    .carousel-container {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        max-width: 800px;
-        height: 400px;
-        margin: 0 auto;
-    }
-    
-    .carousel-slide {
-        flex: 1 0 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
+  
     .testimonial-card {
-        width: 100%;
-        max-width: 800px;
-        box-sizing: border-box;
-        position: relative;
-        background: transparent;
-        border-radius: 0;
-        padding: 2rem;
-        box-shadow: none;
-        border: none;
-        overflow: hidden;
-        user-select: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      position: relative;
+      background-color: #f28928;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
-    .testimonial-bubble {
-        position: relative;
-        background: #e1ffc7;
-        padding: 1.5rem 2rem;
-        border-radius: 20px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        max-width: 90%;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
+  
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
-    
-    .testimonial-bubble:before {
-        content: "";
-        position: absolute;
-        bottom: -15px;
-        left: 15px;
-        width: 0;
-        height: 0;
-        border: 15px solid transparent;
-        border-top-color: #e1ffc7;
+  
+    .arrow-bottom {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      display: block;
+      background: #f28928;
+      transform: rotate(45deg);
+      top: 100%;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
-    .testimonial-bubble h5 {
-        margin: 0;
-        font-size: 1.5rem;
-        font-weight: bold;
+  
+    .testimonial-content {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 20px;
     }
-    
-    .testimonial-bubble p {
-        margin: 0;
-        font-size: 1.125rem;
+  
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    
-    .dots-container {
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        gap: 8px;
+  
+    .author-info {
+      text-align: left;
     }
-    
-    .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: gray;
-        transition: background-color 0.3s;
-        border: none;
-        cursor: pointer;
+  
+    .author-name {
+      font-weight: bold;
+      margin: 0;
+      color: #fff;
+      font-size: 18px;
     }
-    
-    .dot.active {
-        background-color: black;
+  
+    .author-role {
+      margin: 0;
+      color: #ddd;
+      font-size: 14px;
     }
-    
+  
+    @media (max-width: 768px) {
+      .splide__slide {
+        margin: 0 5px;
+      }
+    }
+  
+   .whatsapp-button {
+    display: flex;
+    align-items: center;
+    background-color: #25D366;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    z-index: 1000; /* Pastikan tombol berada di atas elemen lain */
+  }
+  
+  .whatsapp-button:hover {
+    background-color: #128C7E;
+  }
+  
+  .whatsapp-button img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+  
+  
     .footer {
-        background: #2d3748;
-        color: #e2e8f0;
-        padding: 2rem;
-        text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    height: 15rem; /* Ubah tinggi footer di sini */
+    position: relative;
+    overflow: hidden; /* Tambahkan ini untuk menghindari overflow jika ada */
+  }
+  
+    .footer-logo {
+      margin-bottom: 20px;
     }
-    
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: row; /* Change to column for vertical layout */
-        gap: 2rem;
-    }
-    
-    .footer-left, .footer-newsletter, .footer-social {
-        flex: 1;
-        min-width: 200px;
-    }
-    
+  
     .footer-logo img {
-        width: 100px;
+    max-width: 120px; /* Sesuaikan jika perlu */
+  }
+  
+  .footer-links a {
+    color: #f28928;
+    text-decoration: none;
+    font-size: 14px; /* Sesuaikan jika perlu */
+  }
+  
+    .footer-links a {
+      color: #f28928;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
     }
-    
-    .footer-contact {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        gap: 1rem;
-        text-align: left;
+  
+    .footer-links a:hover {
+      color: #ff8c00;
     }
-    
+  
     .footer-social {
-        display: flex;
-        gap: 1rem;
+    margin-bottom: 10px; /* Sesuaikan jika perlu */
+  }
+  
+  .footer-social a {
+    color: #fff;
+    font-size: 18px; /* Sesuaikan jika perlu */
+    margin: 0 8px; /* Sesuaikan jika perlu */
+  }
+  
+    .footer-social a:hover {
+      color: #f28928;
     }
-    
-    .email-link {
-        display: flex;
-        align-items: center;
-        font-size: 24px; /* Sesuaikan ukuran sesuai kebutuhan */
-        color: #ea4335; /* Warna Gmail */
-        text-decoration: none;
-        transition: color 0.3s;
+  
+    .footer-copy {
+    font-size: 12px; /* Sesuaikan jika perlu */
+    margin-top: 5px; /* Sesuaikan jika perlu */
+  }
+  
+    .footer-copy a {
+      color: #f28928;
+      text-decoration: none;
+      transition: color 0.3s;
     }
-
-    .terserah{
-        display: flex;
-        align-items: center;
-        font-size: 24px; /* Sesuaikan ukuran sesuai kebutuhan */
-        color: #ea4335; /* Warna Gmail */
-        text-decoration: none;
-        transition: color 0.3s;
+  
+    .footer-copy a:hover {
+      color: #ff8c00;
     }
-    
-    .email-link:hover {
-        color: #d93025; /* Warna Gmail saat hover */
-    }
-    
-    .email-link i {
-        margin-right: 0.5rem; /* Jarak antara ikon dan teks */
-    }
-    
-    .footer-nav ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    
-    .footer-nav ul li {
-        margin: 0.5rem 0;
-    }
-    
-    .footer-nav a {
-        color: #e2e8f0;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-    
-    .footer-nav a:hover {
-        color: #f7fafc;
-    }
-    
-    .footer-newsletter form {
-        display: flex;
-        gap: 0.5rem;
-        justify-content: center;
-    }
-    
-    .footer-newsletter input {
-        padding: 0.5rem;
-        border: none;
-        border-radius: 4px;
-    }
-    
-    .footer-newsletter button {
-        padding: 0.5rem 1rem;
-        border: none;
-        background-color: #4a5568;
-        color: white;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .footer-newsletter button:hover {
-        background-color: #2d3748;
-    }
-    
-    .footer-bottom {
-        margin-top: 1rem;
-        border-top: 1px solid #4a5568;
-        padding-top: 1rem;
-    }
-    
-    /* WhatsApp Button */
-    .whatsapp-button {
-        display: flex;
-        align-items: center;
-        background-color: #25D366; /* Warna hijau WhatsApp */
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 25px;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        text-decoration: none;
-        font-size: 1rem;
-        font-weight: bold;
-        transition: background-color 0.3s;
-    }
-    
-    .whatsapp-button:hover {
-        background-color: #128C7E; /* Warna hijau WhatsApp yang lebih gelap */
-    }
-    
-    .whatsapp-button img {
-        width: 24px;
-        height: 24px;
-        margin-right: 8px;
-    }
-    
-    /* Tuaide Logo */
-    .logo-container {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1rem;
-        width: 180px;
-    }
-</style>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-<main class="mt-20 font-Kanit text-gray-800 min-h-screen flex flex-col">
-    <div class="flex-1 flex justify-center items-center">
-        <div class="p-8">
-            <h1 class="text-4xl font-bold text-center">Testimoni</h1>
-
-            <!-- Carousel -->
-            <div class="relative w-full">
-                <div class="carousel-container">
-                    <div class="carousel-wrapper">
-                        {#each slides as testimonial, i}
-                            <div class="carousel-slide">
-                                <div class="testimonial-card">
-                                    <div class="testimonial-bubble">
-                                        <h5>{testimonial.name}</h5>
-                                        <p>{testimonial.text}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        {/each}
-                    </div>
-                    <div class="dots-container">
-                        {#each testimonials as _, dotIndex}
-                            <button 
-                                class="dot {dotIndex === (index % testimonials.length) ? 'active' : ''}"
-                                on:click={() => { index = dotIndex + testimonials.length; updateSlide(); }}
-                            ></button>
-                        {/each}
-                    </div>
+  </style>
+  
+  <div class="testimonial-container">
+    <h2 class="testimonial-heading mt-10">Testimoni</h2>
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>"This is an amazing product! I highly recommend it."</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <p class="author-name">John Doe</p>
+                  <p class="author-role">Customer</p>
                 </div>
+              </div>
+              <span class="arrow-bottom"></span>
             </div>
-        </div>
-    </div>
-
-    <!-- WhatsApp Button -->
-    <a 
-        href="https://wa.me/+62 815-1852-575" 
-        target="_blank" 
-        class="whatsapp-button"
-    >
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        Chat Sekarang!
-    </a>
-
-    <!-- Footer -->
-    <!-- Footer -->
-<footer class="footer">
-    <div class="footer-content">
-        <!-- Contact Information -->
-        <div class="footer-left">
-            <div class="footer-logo">
-                <img src="{icon}" alt="logo-icon"/>
-            </div>
-            <div class="footer-contact">
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/tuaide_id?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="terserah" target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="mailto:tuai.ide@gmail.com" class="email-link" aria-label="Email">
-                        <i class="fas fa-envelope"></i> <!-- Ganti dengan ikon email -->
-                    </a>
+          </li>
+          <li class="splide__slide">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>"Excellent service and quality. Will buy again."</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <p class="author-name">Jane Smith</p>
+                  <p class="author-role">Client</p>
                 </div>
-                <p>12 Jl. Wijaya Kusuma, Kota Bogor, Jawa Barat</p>
+              </div>
+              <span class="arrow-bottom"></span>
             </div>
-        </div>
-
-        <!-- Newsletter Signup -->
-        <div class="footer-newsletter">
-            <h5>Subscribe to Our Newsletter</h5>
-            <form>
-                <input type="email" placeholder="Enter your email" required/>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
+          </li>
+          <li class="splide__slide">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>"Excellent service and quality. Will buy again."</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <p class="author-name">Jane Smith</p>
+                  <p class="author-role">Client</p>
+                </div>
+              </div>
+              <span class="arrow-bottom"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-    
-    <!-- Copyright -->
-    <div class="footer-bottom">
-        <p>&copy; 2024 Company Name. All rights reserved.</p>
+  </div>
+  
+  <a 
+    href="https://wa.me/+628151852575" 
+    target="_blank" 
+    class="whatsapp-button"
+  >
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    Chat Sekarang!
+  </a>
+  
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="{terserah}" alt="Company Logo">
     </div>
-</footer>
-</main>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2024 Your Company Name. All rights reserved. | <a href="#privacy-policy">Privacy Policy</a></p>
+    </div>
+  </footer>
+  
