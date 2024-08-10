@@ -24,7 +24,6 @@
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .animated-button svg {
   position: absolute;
   width: 24px;
@@ -32,15 +31,12 @@
   z-index: 9;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .animated-button .arr-1 {
   right: 16px;
 }
-
 .animated-button .arr-2 {
   left: -25%;
 }
-
 .animated-button .circle {
   position: absolute;
   top: 50%;
@@ -53,47 +49,38 @@
   opacity: 0;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .animated-button .text {
   position: relative;
   z-index: 1;
   transform: translateX(-12px);
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 .animated-button:hover {
   box-shadow: 0 0 0 12px transparent;
   color: #fff;
   border-radius: 12px;
 }
-
 .animated-button:hover .arr-1 {
   right: -25%;
 }
-
 .animated-button:hover .arr-2 {
   left: 16px;
 }
-
 .animated-button:hover .text {
   transform: translateX(12px);
 }
-
 .animated-button:hover svg {
   fill: #fff;
 }
-
 .animated-button:active {
   scale: 0.95;
   box-shadow: 0 0 0 4px #fff;
 }
-
 .animated-button:hover .circle {
   width: 220px;
   height: 220px;
   opacity: 1;
 }
-
 </style>
   <!------Background-->
   <div class="h-screen w-full mx-auto relative bg-image bg-cover bg-no-repeat bg-center bg-opacity-50" style="background-image: url({bangor});">
@@ -101,11 +88,11 @@
 
   <!--Content Hero-->
   <div class="w-3/4 relative mx-auto h-auto justify-center">
-    <div class="mx-auto items-cemter relative py-[10rem] ">
+    <div class="mx-auto items-cemter relative py-[10rem]">
       <div class="w-3/4 mx-auto h-[800px] flex">
         <!--Text Content-->
         <div class="flex flex-col w-1/2 mx-auto">
-          <h1 class="text-white text-[3rem] mb-8 roboto-bold pr-[1rem] mt-[7rem]">
+          <h1 class="text-white text-[3rem] mb-5 roboto-bold pr-[1rem] mt-[7rem]">
             Transformasi Merek Anda dengan Sentuhan Desain Grafis yang Memukau!
           </h1>
           <p class="text-[#aeaeae] text-[1rem] roboto-bold max-w-[400px]">
@@ -117,7 +104,7 @@
           </p>
 
             <!--Button Banner-->
-            <div class="w-[11rem] mt-[2rem]"> 
+            <div class="w-[11rem] mt-[2.5rem]"> 
                 <button class="animated-button">
                   <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                     <path

@@ -75,7 +75,6 @@ onMount(() => {
     flex-grow: 1;
     height: 100%;
     padding: 0.25rem;
-    border: 1px solid currentColor; 
     color: #aeaeae;
     transition: color 300ms ease-in-out, fill 500ms ease-in-out;
   }
@@ -88,12 +87,14 @@ onMount(() => {
   .active{
     color: #ffffff; 
     background-color: #ff6f00;
-    box-shadow: #ff6f00;
+    box-shadow: 1px 5px 10px  #f38b3c;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+
   }
   .active-button:hover {
     color: #ffffff; 
     background-color: #ff6f00;
-    box-shadow: #ff6f00;
   }
   
   .non-active-grid{
@@ -109,15 +110,15 @@ transition: display 0.3s ease-in-out;
 
      <!--  Header Content  -->
     <div class=" mx-auto justify-center text-center p-10">
-        <h1 class="text-4xl font-bold ">Portofolio</h1>
-        <p class="m-5"> Dibawah ini adalah lampiran project portofolio yang kami telah kerjakan.
+        <h1 class="text-4xl kanit-bold">Portofolio</h1>
+        <p class="m-5 kanit-medium"> Dibawah ini adalah lampiran project portofolio yang kami telah kerjakan.
         </p>
     </div>
 
  </div>
     
     <!--Navbar-->
-    <div class="w-3/4 h-auto mx-auto border"> 
+    <div class="w-3/4 h-auto mx-auto"> 
     <div class="mx-auto justify-center h-[13vh]">
         <div class="relative mx-auto w-3/4 h-[8vh] mt-[5vh] flex flex-wrap">
                 <button class="button active active-button" id="button1">
@@ -125,7 +126,7 @@ transition: display 0.3s ease-in-out;
                       <path d="M12 21L12 9L6 9L6 15L12 21Z" fill="currentColor" fill-opacity="0.5"/>
                       <path d="M18 9V3H6L12 9H6V15H18L12 9H18Z" fill="currentColor" />
                     </svg>
-                    <span class="text-sm ">Branding Logo</span>  
+                    <span class="text-sm kanit-semibold">BRANDING LOGO</span>  
                 </button>
                      
                 <button class="button" id="button2">
@@ -133,7 +134,7 @@ transition: display 0.3s ease-in-out;
                       <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
                       <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
                     </svg>
-                    <span class=" text-sm">print media</span>
+                    <span class=" text-sm kanit-semibold">PRINT MEDIA</span>
                 </button>
 
               <button class="button" id="button3">
@@ -141,7 +142,7 @@ transition: display 0.3s ease-in-out;
                       <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z"/>
                       <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
                     </svg>
-                    <span class=" text-sm">digital photo product</span>
+                    <span class=" text-sm kanit-semibold">DIGITAL PHOTO PRODUCT</span>
             </button>
             
             <button class="button" id="button4">
@@ -152,15 +153,15 @@ transition: display 0.3s ease-in-out;
                       <path d="M17.6568 9.17156L20.4853 12L17.6568 14.8284L19.0711 16.2426L23.3137 12L19.0711 7.75735L17.6568 9.17156Z" fill="currentColor" />
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8ZM12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10Z" fill="currentColor" />
                     </svg>
-                <span class="text-sm">website design</span>
+                <span class="text-sm kanit-semibold">WEBSITE DESIGN</span>
             </button>
           </div>
           
           
       </div>
     <!--Image-->
-      <div class="mx-auto border">
-      <div class="relative mx-auto border w-3/4 h-auto">
+      <div class="mx-auto">
+      <div class="relative mx-auto w-3/4 h-[1028px]">
 
         <!---Logo-->
         <div class="grid grid-cols-3 gap-8" id="grid1">
