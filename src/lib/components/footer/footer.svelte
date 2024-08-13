@@ -1,5 +1,5 @@
 <script>
-  import terserah from "$lib/images/logo-icon.png"
+  import terserah from "$lib/images/logo-icon.png";
   import { onMount } from 'svelte';
   import Splide from '@splidejs/splide';
   import '@splidejs/splide/dist/css/splide.min.css';
@@ -13,10 +13,12 @@
       perMove    : 1,
       autoplay   : true,
       pagination : true,
-      arrows     : true,
+      arrows     : false,
+      interval   : 2500, // Set interval to 2 seconds
     }).mount();
   });
 </script>
+
 
 <style>
   .splide {
@@ -24,6 +26,7 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
   }
 
   .splide__slide {
@@ -37,22 +40,27 @@
   .splide__pagination {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    margin-bottom: 0;
   }
 
   .splide__pagination__page {
-    width: 12px;
-    height: 4px;
-    margin: 0 4px;
-    background: #f28928;
-    border-radius: 2px;
+    width: 60px; /* Panjang garis */
+    height: 6px; /* Ketebalan garis */
+    margin: 0 5px;
+    background: #f28928; /* Warna garis */
+    border-radius: 3px; /* Atur sudut jika diinginkan */
     opacity: 0.5;
     transition: opacity 0.3s, transform 0.3s;
   }
 
   .splide__pagination__page.is-active {
     opacity: 1;
-    transform: scaleX(1.5);
+    transform: scaleX(1.2); /* Memperbesar garis aktif */
   }
 
   .testimonial-container {
@@ -60,6 +68,8 @@
     text-align: center;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+    margin-bottom: 80px;
   }
 
   .testimonial-heading {
@@ -84,11 +94,6 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  }
-
   .arrow-bottom {
     position: absolute;
     width: 20px;
@@ -101,6 +106,11 @@
     margin-left: -10px;
     margin-top: -10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   }
 
   .testimonial-content {
@@ -138,58 +148,127 @@
     }
   }
 
- .whatsapp-button {
+  .whatsapp-button {
+    display: flex;
+    align-items: center;
+    background-color: #25D366;
+    color: white;
+    padding: 0.5rem 1rem; /* Kecilkan padding untuk tombol utama */
+    border-radius: 50px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+    z-index: 1000;
+    border: 2px solid #25D366;
+  }
+
+  .whatsapp-button:hover {
+    background-color: #128C7E;
+    border-color: #128C7E;
+  }
+
+  .whatsapp-button img {
+    width: 35px;
+    height: 35px;
+    margin-right: 1px;
+  }
+
+  .kenapa-container {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #f9f9f9;
+    color: #333;
+    padding-top: 30px;
+  }
+
+  .kenapa-heading {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 10px;
+  }
+
+  .text {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+  }
+
+  .text p {
+    margin: -5px;
+  }
+
+  @media (max-width: 768px) {
+    .kenapa h2 {
+      font-size: 1.5rem;
+    }
+
+    .text {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+  .whatsapp-button.second-button {
+    margin-bottom: 60px; /* Sesuaikan dengan ukuran layar lebih kecil */
+  }
+}
+
+.whatsapp-button.second-button {
   display: flex;
   align-items: center;
   background-color: #25D366;
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+  padding: 15px 15px;
+  border-radius: 50px;
+  position: relative;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: bold;
   transition: background-color 0.3s;
-  z-index: 1000; /* Pastikan tombol berada di atas elemen lain */
+  width: 250px;
+  margin: 100px auto 0px;
+  text-align: center; /* This centers the text inside */
 }
 
-.whatsapp-button:hover {
-  background-color: #128C7E;
+  .whatsapp-button.second-button:hover {
+    background-color: #128C7E;
+    border-color: #128C7E;
+  }
+
+  .whatsapp-button.second-button img {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
 }
 
-.whatsapp-button img {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
+.whatsapp-text {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  flex: 1; /* Ensures the text takes the remaining space */
 }
-
 
   .footer {
-  background-color: #333;
-  color: #fff;
-  padding: 40px 20px;
-  text-align: center;
-  height: 15rem; /* Ubah tinggi footer di sini */
-  position: relative;
-  overflow: hidden; /* Tambahkan ini untuk menghindari overflow jika ada */
-}
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    height: 10rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px;
+  }
 
   .footer-logo {
-    margin-bottom: 20px;
+    margin-bottom: -20px;
   }
 
   .footer-logo img {
-  max-width: 120px; /* Sesuaikan jika perlu */
-}
-
-.footer-links a {
-  color: #f28928;
-  text-decoration: none;
-  font-size: 14px; /* Sesuaikan jika perlu */
-}
+    max-width: 120px;
+  }
 
   .footer-links a {
     color: #f28928;
@@ -203,23 +282,23 @@
   }
 
   .footer-social {
-  margin-bottom: 10px; /* Sesuaikan jika perlu */
-}
+    margin-bottom: 20px;
+  }
 
-.footer-social a {
-  color: #fff;
-  font-size: 18px; /* Sesuaikan jika perlu */
-  margin: 0 8px; /* Sesuaikan jika perlu */
-}
+  .footer-social a {
+    color: #fff;
+    font-size: 18px;
+    margin: 0 8px;
+  }
 
   .footer-social a:hover {
     color: #f28928;
   }
 
   .footer-copy {
-  font-size: 12px; /* Sesuaikan jika perlu */
-  margin-top: 5px; /* Sesuaikan jika perlu */
-}
+    font-size: 12px;
+    margin-top: -30px;
+  }
 
   .footer-copy a {
     color: #f28928;
@@ -268,12 +347,12 @@
         <li class="splide__slide">
           <div class="testimonial-card">
             <div class="testimonial-content">
-              <p>"Excellent service and quality. Will buy again."</p>
+              <p>"Another great review here."</p>
             </div>
             <div class="testimonial-author">
               <div class="author-info">
-                <p class="author-name">Jane Smith</p>
-                <p class="author-role">Client</p>
+                <p class="author-name">Emily Johnson</p>
+                <p class="author-role">Customer</p>
               </div>
             </div>
             <span class="arrow-bottom"></span>
@@ -281,6 +360,7 @@
         </li>
       </ul>
     </div>
+    <div class="splide__pagination"></div>
   </div>
 </div>
 
@@ -290,8 +370,23 @@
   class="whatsapp-button"
 >
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  Chat Sekarang!
 </a>
+
+<div class="kenapa-container">
+  <h2 class="kenapa-heading kanit-bold">Kami Adalah Desainer Terbaik Yang Tak Perlu Diragukan Lagi!</h2>
+  <div class="text">
+    <p>Masih bingung? Langsung konsultasi secara GRATIS oleh tim TUAIDE.</p>
+  </div>
+  <!-- Tombol WhatsApp Baru -->
+  <a 
+    href="https://wa.me/+628151852575" 
+    target="_blank" 
+    class="whatsapp-button second-button"
+  >
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <span class="whatsapp-text">Hubungi Kami</span>
+  </a>
+</div>
 
 <footer class="footer">
   <div class="footer-logo">
