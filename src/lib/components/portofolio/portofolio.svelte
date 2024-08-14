@@ -34,6 +34,8 @@
   import incar8 from "$lib/images/3/Packaging Tube_design_50 ml • 2.jpg";
   import incar9 from "$lib/images/3/silaris stationary.jpg";
 
+  //Website
+
   const uta = [ images1, images2, images3, images4, images5, images6, images7, images8, images9];
   const pula = [ ima1, ima2, ima3, ima4, ima5, ima6, ima7, ima8, ima9];
   const lurr = [ incar1, incar2, incar3, incar4, incar5, incar6, incar7, incar8, incar9];
@@ -109,8 +111,8 @@ transition: display 0.3s ease-in-out;
 
  <!--  Header Content  -->
 <div class=" mx-auto justify-center text-center p-10">
-    <h1 class="text-4xl kanit-bold">Portofolio</h1>
-    <p class="m-5 kanit-medium"> Dibawah ini adalah lampiran project portofolio yang kami telah kerjakan.
+    <h1 class="text-4xl ubuntu-bold">Portofolio</h1>
+    <p class="my-3 ubuntu-medium"> Dibawah ini adalah lampiran project portofolio yang kami telah kerjakan.
     </p>
 </div>
 </div>

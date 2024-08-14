@@ -151,7 +151,7 @@
       
                               <div class="w-full mx-auto mt-[100px] min-h-[20vh] justify-center my-20 pt-20">
       
-                                    <div class="mx-auto w-3/4 flex">
+                                    <div class="mx-auto w-[66.5vw] flex">
       
                                           <div class=" mx-auto w-1/2 h-auto flex flex-col justify-center">        
                                           <!-- Div kiri -->
