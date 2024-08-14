@@ -432,29 +432,29 @@
     <h2 class="whyus-content playfair-display">Why Us ?</h2>
     <div class="text-whyus">
       <p class="Atas playfair-display">
-      Kami menawarkan kepada Anda wawasan baru dalam menyongsong masa depan
+      Kami menawarkan kepada Anda wawasan baru dalam menyongsong masa depan.
       </p>
       <div class="paragrap">
         <p class="Teks1 playfair-display">
-          <i class="fas fa-lightbulb"></i> Tidak hanya untuk Memvisualisasikan 
+          <i class="fas fa-lightbulb"></i> Tidak hanya untuk Memvisualisasikan .
         </p>
         <p class="Teks2 playfair-display">
-         Namun kita juga harus bisa memberikan inovasi
+         Namun kita juga harus bisa memberikan inovasi.
         </p>
         <p class="Teks1 playfair-display">
-          <i class="fas fa-lightbulb"></i> Tidak hanya Berkomunikasi
+          <i class="fas fa-lightbulb"></i> Tidak hanya Berkomunikasi.
         </p>
         <p class="Teks2 playfair-display">
           Tapi kita juga harus bisa memvisualisasikan apa yang akan kita katakan.
         </p>
         <p class="Teks1 playfair-display">
-          <i class="fas fa-lightbulb"></i> Tidak hanya desain
+          <i class="fas fa-lightbulb"></i> Tidak hanya desain.
         </p>
         <p class="Teks2 playfair-display">
         Namun kita harus memiliki kekuatan komunikasi untuk menyampaikan pesan
         </p>
         <p class="Teks2 playfair-display">
-          <i class="fas fa-lightbulb"></i> kepada orang yang tepat
+      kepada orang yang tepat.
         </p>
       </div>
     </div>
