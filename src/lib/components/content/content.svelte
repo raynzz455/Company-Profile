@@ -38,23 +38,12 @@
                   }
                   </style>
       
-      
-                        <div class="main-content mx-auto w-full justify-center my-[4rem] ">
-      
-                              <!--  Header Content  -->
-                              <div class=" mx-auto justify-center text-center p-10">
-                                    <h1 class="text-4xl kanit-extrabold">Layanan Kami</h1>
-                                    <p class="mt-5 mb-5 roboto-medium">Kami menyediakan jasa desain grafis dan strategis periklanan untuk  <br/>
-                                    memikat calon pembeli anda. Cari Tahu layanan yang kami tawarkan kepada anda disini:
-                                    </p>
-                              </div>
-                        </div>
 
   
                   <div class="main-content mx-auto w-full justify-center my-[4rem] ">
   
                         <!--  Header Content  -->
-                        <div class=" mx-auto justify-center text-center p-10">
+                        <div class=" mx-auto justify-center text-center p-10 ">
                               <h1 class="text-4xl kanit-extrabold">Layanan Kami</h1>
                               <p class="mt-5 mb-5 roboto-medium">Kami menyediakan jasa desain grafis dan strategis periklanan untuk  <br/>
                               memikat calon pembeli anda. Cari Tahu layanan yang kami tawarkan kepada anda disini:
