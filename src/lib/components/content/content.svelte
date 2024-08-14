@@ -49,7 +49,7 @@
                         </div>
   
                         <!--  Image Content  -->
-                        <div class="content w-full">
+                        <div class="content w-[100vw]">
   
                               <div use:svelteTilt ={{
                                 reverse: false,
