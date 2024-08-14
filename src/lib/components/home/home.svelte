@@ -1,9 +1,6 @@
 <script>
     import "../../../app.css";
     import bangor from "$lib/images/lucuanj-mirror.jpg"
-    
-  
-    
   </script>
   <style>
 .animated-button {
@@ -124,20 +121,10 @@
         <!--dummby-->
         <div class="flex w-1/2 mx-auto">
         </div>
-      
-
-
-
-
-
-
-        
       <!--Close Div image banner-->
       </div>
     </div>
   </div>
-  
-    
   </div>
   
 

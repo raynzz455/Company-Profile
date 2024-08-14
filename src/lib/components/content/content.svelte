@@ -153,12 +153,12 @@
       
                               <div class="w-full mx-auto mt-[100px] min-h-[20vh] justify-center my-20 pt-20">
       
-                                    <div class="mx-auto w-[66.5vw] flex">
+                                    <div class="mx-auto w-[65vw] flex">
       
-                                          <div class=" mx-auto w-1/2 h-auto flex flex-col justify-center">        
+                                          <div class=" mx-auto w-1/2 h-auto flex flex-col justify-center pl-[5.5rem] pr-10">        
                                           <!-- Div kiri -->
-                                          <div class=" flex text-start ml-[99px]">
-                                          <p class="kanit-bold text-2xl"><span class="kanit-bold  text-orange-500">Tuaide</span> adalah agensi yang berpengalaman sejak tahun 2012. 
+                                          <div class=" flex ">
+                                          <p class="ubuntu-bold text-xl"><span class="ubuntu-bold  text-orange-500">Tuaide</span> adalah agensi yang berpengalaman sejak tahun 2012. 
                                                 Kami berspesialis pada creative branding, marketing, animation, website & interface desain.</p>
                                           </div>
                                           </div>

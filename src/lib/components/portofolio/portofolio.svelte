@@ -35,36 +35,47 @@
   import incar9 from "$lib/images/3/silaris stationary.jpg";
 
   //Website
+  import web1 from "$lib/images/4/3.jpg"
+  import web2 from "$lib/images/4/Mockup_Web.jpg"
+  import web3 from "$lib/images/4/webb.jpg"
 
+//variable image
   const uta = [ images1, images2, images3, images4, images5, images6, images7, images8, images9];
   const pula = [ ima1, ima2, ima3, ima4, ima5, ima6, ima7, ima8, ima9];
   const lurr = [ incar1, incar2, incar3, incar4, incar5, incar6, incar7, incar8, incar9];
+  const weebo = [ web1, web2, web3 ];
 
-    import { onMount } from 'svelte';
+   import { onMount } from 'svelte';
+   import { fade } from 'svelte/transition';
 
-    let buttons;
-    let buttonsAndGrids = [
-      { buttonId: 'button1', gridId: 'grid1' },
-      { buttonId: 'button2', gridId: 'grid2' },
-      { buttonId: 'button3', gridId: 'grid3' },
-      { buttonId: 'button4', gridId: 'grid4' }
-    ];
 
-    onMount(() => {
-      buttons = document.querySelectorAll('.button');
-      buttons.forEach(button => {
-        button.addEventListener('click', () => {
-          document.querySelectorAll('.button').forEach(btn => btn.classList.remove('active','active-button'));
-          button.classList.add('active','active-button');
-          buttonsAndGrids.forEach(item => {
-            const grid = document.getElementById(item.gridId);
-            if (grid) {
-              grid.classList.toggle('non-active-grid', item.buttonId !== button.id);
-            }
+  let selectedButton = 'button1'; // Currently active button ID
+  let currentImages = uta; // Images to display initially (Logo)
+
+  const buttons = [
+    { id: 'button1', label: 'BRANDING LOGO', images: uta },
+    { id: 'button2', label: 'PRINT MEDIA', images: pula },
+    { id: 'button3', label: 'DIGITAL PHOTO PRODUCT', images: lurr },
+    { id: 'button4', label: 'WEBSITE DESIGN', images: weebo }
+  ];
+
+  onMount(() => {
+    buttons.forEach(button => {
+      const btn = document.getElementById(button.id);
+      if (btn) { // Check if button element exists
+        btn.addEventListener('click', () => {
+          selectedButton = button.id;
+          currentImages = button.images;
+
+          // Update active button styles (optional)
+          document.querySelectorAll('.button').forEach(b => {
+            b.classList.remove('active', 'active-button');
           });
+          btn.classList.add('active', 'active-button');
         });
-      });
+      }
     });
+  });
 </script>
 <style>
   .button {
@@ -97,13 +108,7 @@
     color: #ffffff; 
     background-color: #ff6f00;
   }
-  
-  .non-active-grid{
-    display: none;
-  }
-  .transition-grid {
-transition: display 0.3s ease-in-out;
-}
+
 
 </style>
 <div class="mx-auto w-full h-auto">
@@ -163,50 +168,18 @@ transition: display 0.3s ease-in-out;
   <div class="mx-auto">
   <div class="relative mx-auto w-3/4 h-[1028px]">
 
-    <!---Logo-->
     <div class="grid grid-cols-3 gap-8" id="grid1">
-      {#each uta as un, i}
+      {#each currentImages as un, i}
         <div class="relative h-[330px] group">
           <div class="w-full h-full overflow-hidden">
-            <img class="w-full h-full object-cover object-center transition-transform duration-[350ms] group-hover:scale-110" src={un} alt="Gambar Portofolio Logo" />
+            <img in:fade={{ duration: 500 }} out:fade={{ duration: 300, delay: 100 }} class="w-full h-full object-cover object-center transition-transform duration-[350ms] group-hover:scale-110" src={un} alt="Gambar Portofolio" />
           </div>
         </div>
       {/each}
     </div>
+    
 
-    <!---Print Media-->
-    <div class="grid grid-cols-3 gap-10 non-active-grid transition-grid" id="grid2">
-      {#each pula as pu, i}
-        <div class="relative h-[330px] group ">
-          <div class="w-full h-full overflow-hidden">
-            <img class="w-full h-full object-cover object-center transition-transform duration-[350ms] group-hover:scale-110" src={pu} alt="Gambar Portofolio Print Media" />
-          </div>
-        </div>
-      {/each}
-    </div>
-
-    <!--Digial Photo Product-->
-    <div class="grid grid-cols-3 gap-10 non-active-grid transition-grid" id="grid3">
-      {#each lurr as lu, i}
-        <div class="relative h-[330px] group">
-          <div class="w-full h-full overflow-hidden">
-            <img class="w-full h-full object-cover object-center transition-transform duration-[350ms] group-hover:scale-110" src={lu} alt="Gambar Portofolio Digital" />
-          </div>
-        </div>
-      {/each}
-    </div>
-
-    <!---Website-->
-    <div class="grid grid-cols-3 gap-10 non-active-grid transition-grid" id="grid4">
-      {#each lurr as lu, i}
-        <div class="relative h-[330px] group">
-          <div class="w-full h-full overflow-hidden">
-            <img class="w-full h-full object-cover object-center transition-transform duration-[350ms] group-hover:scale-110" src={lu} alt="Gambar Portofolio Website" />
-          </div>
-        </div>
-      {/each}
-    </div>
-
+   
 
     
     
