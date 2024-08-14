@@ -92,10 +92,10 @@
       <div class="w-3/4 mx-auto h-[800px] flex">
         <!--Text Content-->
         <div class="flex flex-col w-1/2 mx-auto">
-          <h1 class="text-white text-[3rem] mb-5 roboto-bold pr-[1rem] mt-[7rem]">
+          <h1 class="text-white text-[3rem] mb-5 ubuntu-bold pr-[1rem] mt-[6.5rem]">
             Transformasi Merek Anda dengan Sentuhan Desain Grafis yang Memukau!
           </h1>
-          <p class="text-[#aeaeae] text-[1rem] roboto-bold max-w-[400px]">
+          <p class="text-[#aeaeae] text-[1rem] ubuntu-bold max-w-[400px]">
             Butuh visual yang memukau? <br>
             Tuaide siap membantu. Dengan tim desainer profesional, kami akan menerjemahkan 
             visi Anda menjadi desain grafis yang  <br />
