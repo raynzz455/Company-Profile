@@ -7,41 +7,24 @@
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
     }
-
-    // Menutup menu jika klik di luar dropdown
-    document.addEventListener('click', (event) => {
-        const isClickInside = document.querySelector('.dropdown-container')?.contains(event.target);
-        if (!isClickInside) {
-            isMenuOpen = false;
-        }
-    });
 </script>
-
-<style>
-    @media (max-width: 640px) {
-        .logo {
-            width: 5rem;
-            height: 3rem;
-        }
-    }
-</style>
 
 <div class="bg-transparent mx-auto w-full h-[100px]">
     <div class="mx-auto max-w-8xl w-[66vw] px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between py-4">
             <!-- Logo -->
             <div class="flex items-center">
-                <img class="logo w-[7rem] h-[4rem]" src="{icon}" alt="Logo Icon" />
+                <img class="w-[7rem] h-[4rem]" src="{icon}" alt="Logo Icon" />
             </div>
             <!-- Dropdown menu button for mobile -->
-            <div class="relative block sm:hidden ml-auto dropdown-container">
+            <div class="block sm:hidden">
                 <button on:click={toggleMenu} class="text-[#000000] focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
                 <!-- Dropdown menu for mobile -->
-                <div class={`absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg transition-transform duration-300 ${isMenuOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} z-50`}>
+                <div class={`absolute top-full right-0 mt-2 w-48 bg-white shadow-lg rounded-lg transition-transform duration-300 ${isMenuOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
                     <a href="/" class="block px-4 py-2 text-sm text-[#000000] hover:bg-[#F3F4F6]">Home</a>
                     <a href="/" class="block px-4 py-2 text-sm text-[#000000] hover:bg-[#F3F4F6]">About Us</a>
                     <a href="/" class="block px-4 py-2 text-sm text-[#000000] hover:bg-[#F3F4F6]">Portfolio</a>
@@ -70,3 +53,4 @@
         </div>
     </div>
 </div>
+    
