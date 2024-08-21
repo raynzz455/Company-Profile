@@ -92,48 +92,51 @@
 
   /* Media Queries for Responsive Design */
 
-  /* Media Queries for Responsive Design */
+  @media (max-width: 640px) {
+    .animated-button {
+      padding: 6px 1.5rem;
+      font-size: 0.875rem; /* text-sm */
+    }
 
-@media (max-width: 640px) {
-  .animated-button {
-    padding: 6px 1.5rem;
-    font-size: 0.875rem; /* text-sm */
+    .animated-button svg {
+      width: 20px;
+    }
+
+    .animated-button .circle {
+      width: 20px;
+      height: 20px;
+    }
   }
 
-  .animated-button svg {
-    width: 20px;
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .animated-button {
+      padding: 8px 2.7rem;
+      font-size: 1.125rem; /* text-lg */
+    }
+
+    .animated-button svg {
+      width: 24px;
+    }
+
+    .animated-button .circle {
+      width: 30px;
+      height: 30px;
+    }
+
+    .w-full {
+      width: 100%; /* Keep width same as desktop */
+    }
+
+    .text-2xl {
+      font-size: 2rem; /* Adjust font size to be similar to desktop */
+    }
   }
 
-  .animated-button .circle {
-    width: 20px;
-    height: 20px;
+  @media (min-width: 1025px) {
+    .animated-button {
+      padding: 8px 2.7rem;
+    }
   }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  .animated-button {
-    padding: 7px 2rem;
-    font-size: 1rem; /* text-base */
-  }
-
-  .animated-button svg {
-    width: 22px;
-  }
-
-  .animated-button .circle {
-    width: 24px;
-    height: 24px;
-  }
-
-  /* Adjusting hero section for tablets */
-}
-
-@media (min-width: 1025px) {
-  .animated-button {
-    padding: 8px 2.7rem;
-  }
-}
-
 </style>
 
 <div class="h-1/2 w-full mx-auto relative bg-cover bg-no-repeat bg-center bg-opacity-50" style="background-image: url({bangor});">
@@ -147,7 +150,7 @@
         <h1 class="text-[#cecece] text-2xl lg:text-5xl mb-10 font-bold leading-tight">
           Transformasi Merek Anda dengan Sentuhan Desain Grafis yang Memukau!
         </h1>
-        <p class="text-[#cecece] text-sm lg:text-xl max-w-md mx-auto lg:mx-0">
+        <p class="text-[#cecece] text-sm lg:text-xl max-w-md lg:mx-0">
           Butuh visual yang memukau? <br>
           Tuaide siap membantu. Dengan tim desainer profesional, kami akan menerjemahkan 
           visi Anda menjadi desain grafis yang <br>
@@ -177,5 +180,4 @@
     </div>
   </div>
 </div>
-
 <slot></slot>
