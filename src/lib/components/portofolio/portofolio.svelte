@@ -64,22 +64,25 @@
 </script>
 
 <style>
+
   .button {
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
     align-items: center;
     justify-content: center;
     text-align: center;
     flex-grow: 1;
-    height: 100%;
     padding: 0.25rem;
     color: #aeaeae;
     transition: color 300ms ease-in-out, fill 500ms ease-in-out;
+    min-width: 120px; /* Minimum lebar tombol */
+    margin: 0.5rem;
   }
+
   .button:hover {
     color: #ff6f00; 
   }
-  .button svg:hover {
+  .button svg :hover {
     fill: #ff6f00; 
   }
   .active {
@@ -99,6 +102,39 @@
   .transition-grid {
     transition: display 0.3s ease-in-out;
   }
+
+  /* Gambar Grid */
+  .grid-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Menjaga rasio aspek gambar agar tetap kotak */
+  overflow: hidden;
+  display: flex; /* Memastikan semua grid item memiliki fleksibilitas */
+  align-items: center; /* Menyelaraskan gambar secara vertikal di tengah */
+  justify-content: center; /* Menyelaraskan gambar secara horizontal di tengah */
+  border: 1px solid #ddd; /* Menambahkan border ringan untuk visualisasi */
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Menjaga proporsi gambar dengan mengisi elemen secara penuh */
+  object-position: center;
+  transition: transform 350ms ease-in-out;
+}
+
+.grid-item:hover img {
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.non-active-grid {
+  display: none;
+}
+
+.transition-grid {
+  transition: display 0.3s ease-in-out;
+}
+
 </style>
 
 <div class="mx-auto w-full h-auto">
@@ -113,96 +149,71 @@
     <!-- Navbar -->
     <div class="text-center mb-8">
       <div class="flex flex-wrap justify-center space-x-4">
+        <!-- Buttons -->
         <button class="button active active-button" id="button1">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
-            <path d="M12 21L12 9L6 9L6 15L12 21Z" fill="currentColor" fill-opacity="0.5"/>
-            <path d="M18 9V3H6L12 9H6V15H18L12 9H18Z" fill="currentColor" />
-          </svg>
+          <!-- SVG Icon -->
           <span class="text-xs md:text-sm font-semibold">BRANDING LOGO</span>  
         </button>
-
         <button class="button" id="button2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-printer mx-auto" viewBox="0 0 17 17">
-            <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
-            <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
-          </svg>
+          <!-- SVG Icon -->
           <span class="text-xs md:text-sm font-semibold">PRINT MEDIA</span>
         </button>
-
         <button class="button" id="button3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-camera mx-auto" viewBox="0 0 17 17">
-            <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z"/>
-            <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
-          </svg>
+          <!-- SVG Icon -->
           <span class="text-xs md:text-sm font-semibold">DIGITAL PHOTO PRODUCT</span>
         </button>
-        
         <button class="button" id="button4">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
-            <path d="M14.8284 6.34313L16.2426 4.92892L12 0.686279L7.75735 4.92892L9.17156 6.34313L12 3.51471L14.8284 6.34313Z" fill="currentColor" />
-            <path d="M4.92892 16.2426L6.34313 14.8284L3.51471 12L6.34313 9.17156L4.92892 7.75735L0.686279 12L4.92892 16.2426Z" fill="currentColor" />
-            <path d="M7.75735 19.0711L12 23.3137L16.2426 19.0711L14.8284 17.6568L12 20.4853L9.17156 17.6568L7.75735 19.0711Z" fill="currentColor" />
-            <path d="M17.6568 9.17156L20.4853 12L17.6568 14.8284L19.0711 16.2426L23.3137 12L19.0711 7.75735L17.6568 9.17156Z" fill="currentColor" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8ZM12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10Z" fill="currentColor" />
-          </svg>
+          <!-- SVG Icon -->
           <span class="text-xs md:text-sm font-semibold">WEBSITE DESIGN</span>
         </button>
       </div>
     </div>
 
     <!-- Image Grids -->
-   <!-- Image Grids -->
-<div class="mx-auto">
-  <div class="relative mx-auto w-full max-w-7xl">
+    <div class="mx-auto">
+      <div class="relative mx-auto w-full max-w-7xl">
 
-    <!-- Logo -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="grid1">
-      {#each uta as un, i}
-        <div class="relative h-64 group">
-          <div class="w-full h-full overflow-hidden">
-            <img class="w-full h-full object-cover object-center transition-transform duration-[350ms] group-hover:scale-110" src={un} alt="Gambar Portofolio Logo" />
-          </div>
+        <!-- Logo -->
+        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 gap-2" id="grid1">
+          {#each uta as un, i}
+            <div class="grid-item">
+              <img src={un} alt="Gambar Portofolio Logo" />
+            </div>
+          {/each}
         </div>
-      {/each}
+
+       <!-- Print Media -->
+<div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-8 non-active-grid transition-grid" id="grid2">
+  {#each pula as pu, i}
+    <div class="grid-item">
+      <img src={pu} alt="Gambar Portofolio Print Media" />
     </div>
+  {/each}
+</div>
 
-    <!-- Print Media -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 non-active-grid transition-grid" id="grid2">
-      {#each pula as pu, i}
-        <div class="relative h-64 group">
-          <div class="w-full h-full overflow-hidden">
-            <img class="w-full h-full object-cover object-center transition-transform duration-[350ms] group-hover:scale-110" src={pu} alt="Gambar Portofolio Print Media" />
-          </div>
-        </div>
-      {/each}
-    </div>
 
-    <!-- Digital Photo Product -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 non-active-grid transition-grid" id="grid3">
-      {#each lurr as lu, i}
-        <div class="relative h-64 group">
-          <div class="w-full h-full overflow-hidden">
-            <img class="w-full h-full object-cover object-center transition-transform duration-[350ms] group-hover:scale-110" src={lu} alt="Gambar Portofolio Digital" />
-          </div>
+        <!-- Digital Photo Product -->
+        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-8 non-active-grid transition-grid" id="grid3">
+          {#each lurr as lu, i}
+            <div class="grid-item">
+              <img src={lu} alt="Gambar Portofolio Digital" />
+            </div>
+          {/each}
         </div>
-      {/each}
-    </div>
 
-    <!-- Website -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 non-active-grid transition-grid" id="grid4">
-      {#each lurr as lu, i}
-        <div class="relative h-64 group">
-          <div class="w-full h-full overflow-hidden">
-            <img class="w-full h-full object-cover object-center transition-transform duration-[350ms] group-hover:scale-110" src={lu} alt="Gambar Portofolio Website" />
-          </div>  
+        <!-- Website -->
+        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-8 non-active-grid transition-grid" id="grid4">
+          {#each lurr as lu, i}
+            <div class="grid-item">
+              <img src={lu} alt="Gambar Portofolio Website" />
+            </div>
+          {/each}
         </div>
-      {/each}
+
+      </div>
     </div>
 
   </div>
 </div>
-
-      </div>
-    </div>
 
 <slot></slot>

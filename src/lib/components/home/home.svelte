@@ -139,7 +139,7 @@
   }
 </style>
 
-<div class="h-1/2 w-full mx-auto relative bg-cover bg-no-repeat bg-center bg-opacity-50" style="background-image: url({bangor});">
+<div class="h-full w-full mx-auto relative bg-cover bg-no-repeat bg-center bg-opacity-50" style="background-image: url({bangor});">
   <div class="absolute inset-0 opacity-55"></div>
 
   <!-- Content Hero -->

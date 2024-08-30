@@ -78,9 +78,9 @@
 <a 
   href="https://wa.me/+628151852575" 
   target="_blank" 
-  class="fixed bottom-[28vh] right-2 bg-green-500 text-white py-4 px-4 rounded-full shadow-lg border-2 border-green-500 transition-colors duration-300 hover:bg-green-700 z-50"
+  class="fixed bottom-10 right-4 sm:bottom-8 sm:right-8 bg-green-500 text-white py-3 px-2.5 rounded-full shadow-lg border-2 border-green-500 transition-colors duration-300 hover:bg-green-700 z-50"
 >
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-9 h-9 inline-block mr-1">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-7 h-7 inline-block mr-1">
 </a>
 
 <div class="text-center py-8 px-4 bg-gray-100 text-gray-800">
@@ -95,7 +95,6 @@
     <span class="font-bold text-sm">Hubungi Kami</span>
   </a>
 </div>
-
 
 <div class="bg-orange-500 text-black py-10 px-4 playfair-display dm-serif-text-regular">
   <h2 class="text-5xl font-bold mb-6 text-center">Why Us?</h2>
@@ -152,4 +151,3 @@
     <p>&copy; 2024 Your Company Name. All rights reserved. | <a href="#privacy-policy" class="text-orange-500 hover:text-yellow-500">Privacy Policy</a></p>
   </div>
 </footer>
-
