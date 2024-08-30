@@ -47,20 +47,23 @@
   ];
 
   onMount(() => {
-    buttons = document.querySelectorAll('.button');
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('.button').forEach(btn => btn.classList.remove('active','active-button'));
-        button.classList.add('active','active-button');
-        buttonsAndGrids.forEach(item => {
-          const grid = document.getElementById(item.gridId);
-          if (grid) {
-            grid.classList.toggle('non-active-grid', item.buttonId !== button.id);
-          }
-        });
+  buttons = document.querySelectorAll('.button');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      console.log(`Button ${button.id} clicked`);
+      document.querySelectorAll('.button').forEach(btn => btn.classList.remove('active', 'active-button'));
+      button.classList.add('active', 'active-button');
+      buttonsAndGrids.forEach(item => {
+        const grid = document.getElementById(item.gridId);
+        if (grid) {
+          console.log(`Toggling ${item.gridId}`);
+          grid.classList.toggle('non-active-grid', item.buttonId !== button.id);
+        }
       });
     });
   });
+});
+
 </script>
 
 <style>
@@ -97,11 +100,12 @@
     background-color: #ff6f00;
   }
   .non-active-grid {
-    display: none;
-  }
-  .transition-grid {
-    transition: display 0.3s ease-in-out;
-  }
+  display: none !important;
+}
+.transition-grid {
+  transition: all 0.3s ease-in-out;
+}
+
 
   /* Gambar Grid */
   .grid-item {
