@@ -38,25 +38,29 @@
 
   import { onMount } from 'svelte';
 
-  let buttons;
-  let buttonsAndGrids = [
-    { buttonId: 'button1', gridId: 'grid1' },
-    { buttonId: 'button2', gridId: 'grid2' },
-    { buttonId: 'button3', gridId: 'grid3' },
-    { buttonId: 'button4', gridId: 'grid4' }
-  ];
+let buttons;
+let buttonsAndGrids = [
+  { buttonId: 'button1', gridId: 'grid1' },
+  { buttonId: 'button2', gridId: 'grid2' },
+  { buttonId: 'button3', gridId: 'grid3' },
+  { buttonId: 'button4', gridId: 'grid4' }
+];
 
-  onMount(() => {
+onMount(() => {
   buttons = document.querySelectorAll('.button');
   buttons.forEach(button => {
     button.addEventListener('click', () => {
-      console.log(`Button ${button.id} clicked`);
-      document.querySelectorAll('.button').forEach(btn => btn.classList.remove('active', 'active-button'));
+      // Remove 'active' class from all buttons
+      buttons.forEach(btn => btn.classList.remove('active', 'active-button'));
+
+      // Add 'active' class to the clicked button
       button.classList.add('active', 'active-button');
+
+      // Hide or show grids based on the clicked button
       buttonsAndGrids.forEach(item => {
         const grid = document.getElementById(item.gridId);
         if (grid) {
-          console.log(`Toggling ${item.gridId}`);
+          grid.classList.toggle('transition-grid', item.buttonId === button.id);
           grid.classList.toggle('non-active-grid', item.buttonId !== button.id);
         }
       });
@@ -75,7 +79,7 @@
     justify-content: center;
     text-align: center;
     flex-grow: 1;
-    padding: 0.25rem;
+    padding: 10px;
     color: #aeaeae;
     transition: color 300ms ease-in-out, fill 500ms ease-in-out;
     min-width: 120px; /* Minimum lebar tombol */
@@ -99,12 +103,18 @@
     color: #ffffff; 
     background-color: #ff6f00;
   }
+    
   .non-active-grid {
-  display: none !important;
+  display: none;
 }
+
 .transition-grid {
-  transition: all 0.3s ease-in-out;
+  display: grid;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
+
 
 
   /* Gambar Grid */
@@ -151,7 +161,7 @@
     </div>
 
     <!-- Navbar -->
-    <div class="text-center mb-8">
+    <div class="text-center mb-4">
       <div class="flex flex-wrap justify-center space-x-4">
         <!-- Buttons -->
         <button class="button active active-button" id="button1">
@@ -187,7 +197,7 @@
         </div>
 
        <!-- Print Media -->
-<div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-8 non-active-grid transition-grid" id="grid2">
+<div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-2 non-active-grid transition-grid" id="grid2">
   {#each pula as pu, i}
     <div class="grid-item">
       <img src={pu} alt="Gambar Portofolio Print Media" />
@@ -197,7 +207,7 @@
 
 
         <!-- Digital Photo Product -->
-        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-8 non-active-grid transition-grid" id="grid3">
+        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-2 non-active-grid transition-grid" id="grid3">
           {#each lurr as lu, i}
             <div class="grid-item">
               <img src={lu} alt="Gambar Portofolio Digital" />
@@ -206,7 +216,7 @@
         </div>
 
         <!-- Website -->
-        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-8 non-active-grid transition-grid" id="grid4">
+        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-2 non-active-grid transition-grid" id="grid4">
           {#each lurr as lu, i}
             <div class="grid-item">
               <img src={lu} alt="Gambar Portofolio Website" />
