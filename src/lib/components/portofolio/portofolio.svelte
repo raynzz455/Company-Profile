@@ -36,6 +36,27 @@
   const pula = [ima1, ima2, ima3, ima4, ima5, ima6, ima7, ima8, ima9];
   const lurr = [incar1, incar2, incar3, incar4, incar5, incar6, incar7, incar8, incar9];
 
+  let currentImages = uta;
+
+  function showImages(buttonId) {
+    switch(buttonId) {
+      case 'button1':
+        currentImages = uta;
+        break;
+      case 'button2':
+        currentImages = pula;
+        break;
+      case 'button3':
+        currentImages = lurr;
+        break;
+      case 'button4':
+        currentImages = lurr; // Adjust this if you have different images for button4
+        break;
+      default:
+        currentImages = uta;
+    }
+  }
+
   import { onMount } from 'svelte';
 
   onMount(() => {
@@ -55,14 +76,8 @@
         // Add 'active' class to the clicked button
         button.classList.add('active', 'active-button');
 
-        // Hide or show grids based on the clicked button
-        buttonsAndGrids.forEach(item => {
-          const grid = document.getElementById(item.gridId);
-          if (grid) {
-            grid.classList.toggle('transition-grid', item.buttonId === button.id);
-            grid.classList.toggle('non-active-grid', item.buttonId !== button.id);
-          }
-        });
+        // Show the corresponding images
+        showImages(button.id);
       });
     });
   });
@@ -98,17 +113,6 @@
   .active-button:hover {
     color: #ffffff;
     background-color: #ff6f00;
-  }
-
-  .non-active-grid {
-    display: none;
-  }
-
-  .transition-grid {
-    display: grid;
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
   }
 
   .grid-item {
@@ -170,48 +174,16 @@
     <!-- Image Grids -->
     <div class="mx-auto">
       <div class="relative mx-auto w-full max-w-7xl">
-
-        <!-- Logo -->
-        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 gap-2" id="grid1">
-          {#each uta as un, i}
+        <!-- Dynamic Grid -->
+        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-2">
+          {#each currentImages.slice(0, 9) as img}
             <div class="grid-item">
-              <img src={un} alt="Gambar Portofolio Logo" />
+              <img src={img} alt="Portofolio Image" />
             </div>
           {/each}
         </div>
-
-       <!-- Print Media -->
-<div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-2 non-active-grid transition-grid" id="grid2">
-  {#each pula as pu, i}
-    <div class="grid-item">
-      <img src={pu} alt="Gambar Portofolio Print Media" />
-    </div>
-  {/each}
-</div>
-
-
-        <!-- Digital Photo Product -->
-        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-2 non-active-grid transition-grid" id="grid3">
-          {#each lurr as lu, i}
-            <div class="grid-item">
-              <img src={lu} alt="Gambar Portofolio Digital" />
-            </div>
-          {/each}
-        </div>
-
-        <!-- Website -->
-        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-2 non-active-grid transition-grid" id="grid4">
-          {#each lurr as lu, i}
-            <div class="grid-item">
-              <img src={lu} alt="Gambar Portofolio Website" />
-            </div>
-          {/each}
-        </div>
-
       </div>
     </div>
 
   </div>
 </div>
-
-<slot></slot>
