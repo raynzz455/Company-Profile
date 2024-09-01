@@ -38,43 +38,40 @@
 
   import { onMount } from 'svelte';
 
-let buttons;
-let buttonsAndGrids = [
-  { buttonId: 'button1', gridId: 'grid1' },
-  { buttonId: 'button2', gridId: 'grid2' },
-  { buttonId: 'button3', gridId: 'grid3' },
-  { buttonId: 'button4', gridId: 'grid4' }
-];
+  onMount(() => {
+    const buttons = document.querySelectorAll('.button');
+    const buttonsAndGrids = [
+      { buttonId: 'button1', gridId: 'grid1' },
+      { buttonId: 'button2', gridId: 'grid2' },
+      { buttonId: 'button3', gridId: 'grid3' },
+      { buttonId: 'button4', gridId: 'grid4' }
+    ];
 
-onMount(() => {
-  buttons = document.querySelectorAll('.button');
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Remove 'active' class from all buttons
-      buttons.forEach(btn => btn.classList.remove('active', 'active-button'));
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove 'active' class from all buttons
+        buttons.forEach(btn => btn.classList.remove('active', 'active-button'));
 
-      // Add 'active' class to the clicked button
-      button.classList.add('active', 'active-button');
+        // Add 'active' class to the clicked button
+        button.classList.add('active', 'active-button');
 
-      // Hide or show grids based on the clicked button
-      buttonsAndGrids.forEach(item => {
-        const grid = document.getElementById(item.gridId);
-        if (grid) {
-          grid.classList.toggle('transition-grid', item.buttonId === button.id);
-          grid.classList.toggle('non-active-grid', item.buttonId !== button.id);
-        }
+        // Hide or show grids based on the clicked button
+        buttonsAndGrids.forEach(item => {
+          const grid = document.getElementById(item.gridId);
+          if (grid) {
+            grid.classList.toggle('transition-grid', item.buttonId === button.id);
+            grid.classList.toggle('non-active-grid', item.buttonId !== button.id);
+          }
+        });
       });
     });
   });
-});
-
 </script>
 
 <style>
-
   .button {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -82,73 +79,60 @@ onMount(() => {
     padding: 10px;
     color: #aeaeae;
     transition: color 300ms ease-in-out, fill 500ms ease-in-out;
-    min-width: 120px; /* Minimum lebar tombol */
+    min-width: 120px;
     margin: 0.5rem;
   }
 
   .button:hover {
-    color: #ff6f00; 
+    color: #ff6f00;
   }
-  .button svg :hover {
-    fill: #ff6f00; 
-  }
+
   .active {
-    color: #ffffff; 
+    color: #ffffff;
     background-color: #ff6f00;
     box-shadow: 0px 8px 15px 0px #faccaa;
     border-top-left-radius: 0.4rem;
     border-top-right-radius: 0.4rem;
   }
+
   .active-button:hover {
-    color: #ffffff; 
+    color: #ffffff;
     background-color: #ff6f00;
   }
-    
+
   .non-active-grid {
-  display: none;
-}
+    display: none;
+  }
 
-.transition-grid {
-  display: grid;
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-}
+  .transition-grid {
+    display: grid;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
 
-
-
-  /* Gambar Grid */
   .grid-item {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1; /* Menjaga rasio aspek gambar agar tetap kotak */
-  overflow: hidden;
-  display: flex; /* Memastikan semua grid item memiliki fleksibilitas */
-  align-items: center; /* Menyelaraskan gambar secara vertikal di tengah */
-  justify-content: center; /* Menyelaraskan gambar secara horizontal di tengah */
-  border: 1px solid #ddd; /* Menambahkan border ringan untuk visualisasi */
-}
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+  }
 
-.grid-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Menjaga proporsi gambar dengan mengisi elemen secara penuh */
-  object-position: center;
-  transition: transform 350ms ease-in-out;
-}
+  .grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 350ms ease-in-out;
+  }
 
-.grid-item:hover img {
-  transform: scale(1.1); /* Zoom effect on hover */
-}
-
-.non-active-grid {
-  display: none;
-}
-
-.transition-grid {
-  transition: display 0.3s ease-in-out;
-}
-
+  .grid-item:hover img {
+    transform: scale(1.1);
+  }
 </style>
 
 <div class="mx-auto w-full h-auto">
