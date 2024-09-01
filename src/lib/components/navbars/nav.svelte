@@ -21,9 +21,10 @@
             document.removeEventListener('click', handleClickOutside);
         }
     }
+    
 </script>
 
-<div class="fixed top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold">
+<div class="fixed top-0 left-0 w-full bg-white/95 shadow-lg z-50 ubuntu-bold">
     <div class="container mx-auto flex items-center justify-between p-4">
         <!-- Logo -->
         <div class="flex items-center">
