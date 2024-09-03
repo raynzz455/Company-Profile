@@ -93,9 +93,9 @@
     padding: 10px;
     color: #aeaeae;
     transition: color 300ms ease-in-out, fill 500ms ease-in-out;
-    min-width: 120px;
-    margin: 0.5rem;
-    height: 120px; /* Adjust height if necessary */
+    min-width: 90px;
+    margin: 0.3rem;
+    height: 70px; /* Adjust height if necessary */
   }
 
   .button svg {
