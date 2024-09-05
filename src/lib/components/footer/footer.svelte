@@ -96,36 +96,47 @@
   </a>
 </div>
 
-<div class="bg-orange-500 text-black py-10 px-4 playfair-display dm-serif-text-regular">
-  <h2 class="text-5xl font-bold mb-6 text-center">Why Us?</h2>
-  <div class="space-y-1 mx-auto text-sm max-w-4xl">
-    <div class="flex items-center mb-4">
-      <p>Kami menawarkan kepada Anda wawasan baru dalam menyongsong masa depan.</p>
+<div class="bg-white text-black py-10 px-4 playfair-display dm-serif-text-regular">
+  <h2 class="text-4xl md:text-5xl font-bold mb-6 text-center">Why Us?</h2>
+  <div class="space-y-4 mx-auto text-[0.6rem] md:text-2xl max-w-4xl">
+    <!-- Pertama Row -->
+    <div class="flex flex-row items-center space-x-1">
+      <div class="flex w-1/2 h-auto">
+        <img src="/pler/icon3.png" alt="" class="w-full h-auto object-cover">
+      </div>
+      <div class="flex flex-col w-1/2 h-auto">
+        <p>Tidak hanya untuk Memvisualisasikan.</p>
+        <p class="mt-1 md:mt-5">Namun kita juga harus bisa memberikan inovasi.</p>
+      </div>
     </div>
-    <div class="flex items-center">
-      <i class="fas fa-lightbulb text-yellow-300 mr-1 mb-2"></i>
-      <p>Tidak hanya untuk Memvisualisasikan.</p>
+
+    <!-- Kedua Row -->
+    <div class="flex flex-row items-center space-x-6">
+      <div class="flex flex-col w-1/2 h-auto">
+        <p class="mb-2">Tidak hanya Berkomunikasi.</p>
+        <p class="mt-[-4px] md:mt-5">Tapi kita juga harus bisa memvisualisasikan apa yang akan kita katakan.</p>
+      </div>
+      <div class="flex w-1/2 h-auto">
+        <img src="/pler/icon2.png" alt="" class="w-full h-auto object-cover">
+      </div>
     </div>
-    <div class="flex items-center">
-      <p class="mb-2">Namun kita juga harus bisa memberikan inovasi.</p>
-    </div>
-    <div class="flex items-center">
-      <i class="fas fa-lightbulb text-yellow-300 mr-1 mb-2"></i>
-      <p class="mb-2">Tidak hanya Berkomunikasi.</p>
-    </div>
-    <div class="flex items-center">
-      <p class="mb-2">Tapi kita juga harus bisa memvisualisasikan apa yang akan kita katakan.</p>
-    </div>
-    <div class="flex items-center">
-      <i class="fas fa-lightbulb text-yellow-300 mr-1 mb-2"></i>
-      <p>Tidak hanya desain.</p>
-    </div>
-    <div class="flex items-center">
-      <p>Namun kita harus memiliki kekuatan komunikasi untuk menyampaikan pesan kepada orang yang tepat.</p>
+
+    <!-- Ketiga Row -->
+    <div class="flex flex-row items-center space-x-5">
+      <div class="flex w-1/2 h-auto">
+        <img src="/pler/icon1.png" alt="" class="w-full h-auto object-cover">
+      </div>
+      <div class="flex flex-col w-1/2 h-auto">
+        <p>Tidak hanya desain.</p>
+        <p class="mt-1 md:mt-5">Namun kita harus memiliki kekuatan komunikasi untuk menyampaikan pesan kepada orang yang tepat.</p>
+      </div>
     </div>
   </div>
 </div>
 
+
+
+  
 <footer class="bg-gray-800 text-white py-5 px-4 text-center mt-16 relative overflow-hidden">
   <div class="mb-[0px]">
     <img src="{terserah}" alt="Company Logo" class="max-w-[100px] justify-left">
