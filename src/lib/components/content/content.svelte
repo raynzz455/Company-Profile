@@ -99,8 +99,8 @@
 <div class="main-content mx-auto w-full justify-center my-[4rem]">
   <!-- Header Content -->
   <div class="mx-auto justify-center text-center p-10">
-    <h1 class="text-3xl kanit-extrabold">Layanan Kami</h1>
-    <p class="mt-5 mb-5 roboto-regular text-base">
+    <h1 class="md:text-3xl text-xl kanit-extrabold">Layanan Kami</h1>
+    <p class="mt-5 mb-5 roboto-regular md:text-base text-sm">
       Kami menyediakan jasa desain grafis dan strategis periklanan untuk <br/>
       memikat calon pembeli anda. Cari Tahu layanan yang kami tawarkan kepada anda disini:
     </p>
