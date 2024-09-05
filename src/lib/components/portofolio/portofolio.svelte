@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import "../../../app.css";
 
   // Import images
@@ -38,7 +38,8 @@
 
   let currentImages = uta;
 
-  function showImages(buttonId) {
+  // Define the type of buttonId
+  function showImages(buttonId: string) {
     switch(buttonId) {
       case 'button1':
         currentImages = uta;
@@ -61,13 +62,6 @@
 
   onMount(() => {
     const buttons = document.querySelectorAll('.button');
-    const buttonsAndGrids = [
-      { buttonId: 'button1', gridId: 'grid1' },
-      { buttonId: 'button2', gridId: 'grid2' },
-      { buttonId: 'button3', gridId: 'grid3' },
-      { buttonId: 'button4', gridId: 'grid4' }
-    ];
-
     buttons.forEach(button => {
       button.addEventListener('click', () => {
         // Remove 'active' class from all buttons
@@ -82,6 +76,9 @@
     });
   });
 </script>
+
+
+
 <style>
   .button {
     display: flex;
@@ -200,7 +197,7 @@
         <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-2">
           {#each currentImages.slice(0, 9) as img}
             <div class="grid-item">
-              <img src={img} alt="Portofolio Image" />
+              <img src={img} alt="Portofolio Gambar" />
             </div>
           {/each}
         </div>

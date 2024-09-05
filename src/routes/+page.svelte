@@ -11,12 +11,22 @@
         
      </style>
     <div class="w-full overflow-hidden">
-        <Home />
-        <Cons />
-        <Porto />
-        <Footer />
-    </div>
-    
+        <section id="home">
+            <Home />
+        </section>
+        
+        <section id="about">
+            <Cons />
+        </section>
+        
+        <section id="portfolio">
+            <Porto />
+        </section>
+        
+        <section id="contact">
+            <Footer />
+        </section>
+        </div>
     </body>
     
     
