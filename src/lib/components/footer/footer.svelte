@@ -98,7 +98,7 @@
 
 <div class="bg-white text-black py-10 px-4 playfair-display dm-serif-text-regular">
   <h2 class="text-4xl md:text-5xl font-bold mb-6 text-center">Why Us?</h2>
-  <div class="space-y-4 mx-auto text-[0.6rem] md:text-2xl max-w-4xl">
+  <div class="space-y-4 mx-auto text-[0.7rem] md:text-2xl max-w-4xl">
     <h3 class="text-lg md:text-2xl font-bold mb-10 text-center">Kami menawarkan wawasan baru dalam menyongsong masa depan</h3>
 
     <!-- Pertama Row -->
