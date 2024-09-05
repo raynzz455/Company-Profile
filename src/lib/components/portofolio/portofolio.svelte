@@ -80,20 +80,26 @@
 
 
 <style>
-  .button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-grow: 1;
-    padding: 10px;
-    color: #aeaeae;
-    transition: color 300ms ease-in-out, fill 500ms ease-in-out;
-    min-width: 90px;
-    margin: 0.3rem;
-    height: 70px; /* Adjust height if necessary */
-  }
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-grow: 1;
+  padding: 10px;
+  color: #aeaeae;
+  transition: color 300ms ease-in-out, fill 500ms ease-in-out;
+  min-width: 90px;
+  margin: 0.3rem;
+  height: 70px; /* Adjust height if necessary */
+}
+
+/* Ukuran default untuk teks di dalam tombol */
+.button span {
+  font-size: 0.75rem; /* Default font size */
+}
 
   .button svg {
     margin-bottom: 0.5rem;
@@ -140,6 +146,36 @@
   .grid-item:hover img {
     transform: scale(1.1);
   }
+
+  @media (max-width: 600px) {
+  .button {
+    min-width: 20px; /* Ukuran minimum width lebih kecil */
+    padding: 8px; /* Padding lebih kecil */
+    height: 80px; /* Tinggi tombol lebih kecil */
+  }
+
+  .button span {
+    font-size: 0.6rem; /* Ukuran font lebih kecil */
+  }
+}
+
+/* Pastikan tombol-tombol diatur dalam satu baris pada tampilan mobile */
+@media (max-width: 600px) {
+  .text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flex-wrap {
+    flex-wrap: nowrap; /* Pastikan tombol sejajar dalam satu baris */
+    overflow-x: auto; /* Menambahkan scroll horizontal jika diperlukan */
+  }
+
+  .button {
+    margin: 0.2rem; /* Margin lebih kecil */
+  }
+}
 </style>
 
 <div class="mx-auto w-full h-auto">
