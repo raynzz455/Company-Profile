@@ -78,7 +78,7 @@
 <a 
   href="https://wa.me/+628151852575" 
   target="_blank" 
-  class="fixed bottom-10 right-4 sm:bottom-8 sm:right-8 bg-green-500 text-white py-3 px-2.5 rounded-full shadow-lg border-2 border-green-500 transition-colors duration-300 hover:bg-green-700 z-50"
+  class="fixed bottom-[10.4vh] right-4 sm:bottom-8 sm:right-8 bg-green-500 text-white py-3 px-2.5 rounded-full shadow-lg border-2 border-green-500 transition-colors duration-300 hover:bg-green-700 z-50"
 >
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-7 h-7 inline-block mr-1">
 </a>
