@@ -91,7 +91,7 @@
 
 </style>
 
-<div class="bg-white p-[9vh]">
+<div class="bg-white md:p-[9vh] p-[9vh]">
     <div class="header fixed top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold">
         <div class="container mx-auto flex items-center justify-between p-4">
             <!-- Logo -->
