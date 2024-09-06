@@ -67,11 +67,11 @@
 }
 
 .navbar-visible {
-  transform: translateY(-20%);
+  transform: translateY(-10%);
   transition: transform 0.3s ease-in-out;
 }
 </style>
-<div class={`fixed top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold ${navbarClass}`}>
+<div class={`top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold ${navbarClass}`}>
     <div class="container mx-auto flex items-center justify-between p-4">
         <!-- Logo -->
         <div class="flex items-center">

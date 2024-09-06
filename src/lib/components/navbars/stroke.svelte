@@ -73,7 +73,7 @@
 }
 
 .fixed-navbar.visible {
-  transform: translateY(0); /* Tampilkan navbar */
+  transform: translateY(-100%); /* Tampilkan navbar */
 }
 </style>
 

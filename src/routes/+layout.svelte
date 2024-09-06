@@ -5,7 +5,7 @@
   </script>
   <div class="w-full overflow-hidden">
   <Navbar />
-  <div class="z-70">
+  <!--    --><div class="z-70">
     <Stroke />
   </div>
   
