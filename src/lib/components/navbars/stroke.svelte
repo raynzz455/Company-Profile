@@ -7,8 +7,8 @@
     import Contact from '$lib/components/footer/footer.svelte';
 
     let isMenuOpen = false;
-    let lastScrollTop = 0;
-    let navbarClass = 'navbar-visible';
+    let padding = 'p-4';  // Padding default
+    let isScrolled = false;
 
     function toggleMenu(): void {
         isMenuOpen = !isMenuOpen;
@@ -31,15 +31,18 @@
     }
 
     function handleScroll() {
-        const currentScrollTop = window.scrollY;
-        if (currentScrollTop > lastScrollTop) {
-            // Scrolling down
-            navbarClass = 'navbar-hidden';
+        const threshold = 50;  // Anda bisa menyesuaikan nilai ini sesuai kebutuhan
+        if (window.scrollY > threshold) {
+            if (!isScrolled) {
+                isScrolled = true;
+                padding = 'p-2';  // Padding setelah scroll
+            }
         } else {
-            // Scrolling up
-            navbarClass = 'navbar-visible';
+            if (isScrolled) {
+                isScrolled = false;
+                padding = 'p-4';  // Padding default
+            }
         }
-        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
     }
 
     import { onMount } from 'svelte';
@@ -53,26 +56,29 @@
 </script>
 
 <style>
-    .sticky-navbar {
-  position: sticky;
+    .transition-padding {
+  transition: padding 0.3s ease-in-out;
+}
+
+.fixed-navbar {
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
   background-color: white;
-  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-100%); /* Sembunyikan navbar dengan cara ini */
+  transition: transform 0.3s ease;
 }
 
-.navbar-hidden {
-  transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.navbar-visible {
-  transform: translateY(-20%);
-  transition: transform 0.3s ease-in-out;
+.fixed-navbar.visible {
+  transform: translateY(0); /* Tampilkan navbar */
 }
 </style>
-<div class={`fixed top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold ${navbarClass}`}>
-    <div class="container mx-auto flex items-center justify-between p-4">
+
+<div class={`fixed top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold transition-padding ${padding}`}>
+    <div class="container mx-auto flex items-center justify-between px-4">
         <!-- Logo -->
         <div class="flex items-center">
             <img class="w-20 h-12 sm:w-28 sm:h-16 mr-4" src="{icon}" alt="Logo Icon" />
