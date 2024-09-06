@@ -1,5 +1,6 @@
 <script lang="ts">
     import "../../../app.css";
+    import { onMount } from 'svelte';
     import icon from '$lib/images/logo-icon.png';
     import Home from '$lib/components/home/home.svelte';
     import About from '$lib/components/content/content.svelte';
@@ -27,6 +28,25 @@
             }
         }
     }
+
+    onMount(() => {
+    const header = document.querySelector('.header') as HTMLElement | null;
+
+    function handleScroll() {
+        if (window.scrollY > 50) { // Sesuaikan nilai ini sesuai kebutuhan
+            header?.classList.add('scrolled');
+        } else {
+            header?.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Remove event listener on component destroy
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+});
 </script>
 
 <style>
@@ -58,10 +78,21 @@
     .dropdown-button {
         position: relative;
     }
+
+    .header {
+    padding: 2.2vh 0.2rem; /* Padding default dengan vh untuk responsive */
+    transition: padding 0.3s ease; /* Transisi padding */
+}
+
+.header.scrolled {
+    padding: 0.5vh 0.2rem; /* Padding saat scroll lebih kecil */
+}
+
+
 </style>
 
-<div class="bg-white p-[6.8vh]">
-    <div class="fixed top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold">
+<div class="bg-white p-[9vh]">
+    <div class="header fixed top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold">
         <div class="container mx-auto flex items-center justify-between p-4">
             <!-- Logo -->
             <div class="flex items-center">

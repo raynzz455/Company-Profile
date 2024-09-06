@@ -146,7 +146,7 @@
   }
 </style>
 
-<div class="h-[100%] w-full mx-auto relative bg-cover bg-no-repeat bg-center bg-opacity-50" style="background-image: url('/pler/lucuanj-mirror.jpg');">
+<div class="h-screen w-full mx-auto relative bg-cover bg-no-repeat bg-center bg-opacity-50" style="background-image: url('/pler/lucuanj-mirror.jpg');">
   <div class="absolute inset-0 opacity-55"></div>
 
   <!-- Content Hero -->
