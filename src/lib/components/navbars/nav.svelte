@@ -7,71 +7,67 @@
     import Contact from '$lib/components/footer/footer.svelte';
 
     let isMenuOpen = false;
-    let lastScrollTop = 0;
-    let navbarClass = 'navbar-visible';
 
     function toggleMenu(): void {
-        isMenuOpen = !isMenuOpen;
-        if (isMenuOpen) {
-            document.addEventListener('click', handleClickOutside);
-        } else {
+    isMenuOpen = !isMenuOpen;
+    if (isMenuOpen) {
+        document.addEventListener('click', handleClickOutside);
+    } else {
+        document.removeEventListener('click', handleClickOutside);
+    }
+}
+
+function handleClickOutside(event: MouseEvent): void {
+    const dropdown = document.querySelector('.dropdown-menu') as HTMLElement | null;
+    const button = document.querySelector('.dropdown-button') as HTMLElement | null;
+    if (dropdown && button) {
+        if (!dropdown.contains(event.target as Node) && !button.contains(event.target as Node)) {
+            isMenuOpen = false;
             document.removeEventListener('click', handleClickOutside);
         }
     }
+}
 
-    function handleClickOutside(event: MouseEvent): void {
-        const dropdown = document.querySelector('.dropdown-menu') as HTMLElement | null;
-        const button = document.querySelector('.dropdown-button') as HTMLElement | null;
-        if (dropdown && button) {
-            if (!dropdown.contains(event.target as Node) && !button.contains(event.target as Node)) {
-                isMenuOpen = false;
-                document.removeEventListener('click', handleClickOutside);
-            }
-        }
-    }
 
-    function handleScroll() {
-        const currentScrollTop = window.scrollY;
-        if (currentScrollTop > lastScrollTop) {
-            // Scrolling down
-            navbarClass = 'navbar-hidden';
-        } else {
-            // Scrolling up
-            navbarClass = 'navbar-visible';
-        }
-        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
-    }
-
-    import { onMount } from 'svelte';
-    onMount(() => {
-        window.addEventListener('scroll', handleScroll);
-        
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    });
+    
 </script>
 
-<style>
-    .sticky-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: white;
-  width: 100%;
+    <style>
+  .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Posisi menu dropdown di bawah tombol */
+    right: 0;
+    margin-top: 0.5rem;
+    width: 12rem; /* Lebar dropdown menu */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    z-index: 2000; /* Pastikan dropdown berada di atas elemen lain */
+    opacity: 0; /* Mulai dengan opacity 0 */
+    transform: translateY(-10px); /* Posisi awal dropdown sedikit di atas tombol */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transisi opacity dan transform */
 }
 
-.navbar-hidden {
-  transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out;
+.dropdown-menu.show {
+    opacity: 1; /* Opacity penuh saat tampil */
+    transform: translateY(0); /* Posisi dropdown kembali ke posisi normal */
 }
 
-.navbar-visible {
-  transform: translateY(-10%);
-  transition: transform 0.3s ease-in-out;
+.dropdown-menu.hide {
+    opacity: 0; /* Opacity 0 saat tersembunyi */
+    transform: translateY(-10px); /* Posisi dropdown tetap sedikit di atas tombol */
 }
+
+
+
+    .dropdown-button {
+        position: relative;
+    } 
+
+    
 </style>
-<div class={`top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold ${navbarClass}`}>
+
+<div class="top-0 left-0 w-full bg-white/95 shadow-lg z-50 ubuntu-bold">
     <div class="container mx-auto flex items-center justify-between p-4">
         <!-- Logo -->
         <div class="flex items-center">
@@ -86,7 +82,7 @@
                 </svg>
             </button>
             <!-- Dropdown menu for mobile -->
-            <div class={`absolute top-full right-0 mt-2 w-48 bg-white shadow-lg rounded-lg transition-transform duration-300 ease-in-out transform ${isMenuOpen ? 'scale-100 opacity-100' : 'scale-90 opacity-0'} dropdown-menu`}>
+            <div class={`absolute top-full right-0 mt-2 w-48 bg-white shadow-lg rounded-lg transition-transform duration-300 ease-in-out transform ${isMenuOpen ? 'show' : 'hide'} dropdown-menu`}>
                 <a href="#home" class="block px-4 py-2 text-sm text-black hover:bg-gray-200">Home</a>
                 <a href="#about" class="block px-4 py-2 text-sm text-black hover:bg-gray-200">About Us</a>
                 <a href="#portfolio" class="block px-4 py-2 text-sm text-black hover:bg-gray-200">Portfolio</a>
