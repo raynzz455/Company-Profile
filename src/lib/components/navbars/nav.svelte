@@ -79,8 +79,9 @@
         position: relative;
     }
 
-    .header {
-    padding: 2.2vh 0.2rem; /* Padding default dengan vh untuk responsive */
+    /* Padding untuk header dan elemen lain */
+.header {
+    padding: 23px 0.1rem; /* Padding default */
     transition: padding 0.3s ease; /* Transisi padding */
 }
 
@@ -88,10 +89,19 @@
     padding: 0.5vh 0.2rem; /* Padding saat scroll lebih kecil */
 }
 
+/* Padding untuk div utama agar konsisten dengan header */
+.bg-padding {
+    padding: 60px 0.2rem; /* Padding default sama dengan header */
+    /* Responsif */
+    @media (min-width: 768px) {
+        padding: 10vh 2rem; /* Contoh padding untuk perangkat lebih besar */
+    }
+}
+
 
 </style>
 
-<div class="bg-white md:p-[9vh] p-[9vh]">
+<div class="bg-white bg-padding">
     <div class="header fixed top-0 left-0 w-full bg-white shadow-lg z-50 ubuntu-bold">
         <div class="container mx-auto flex items-center justify-between p-4">
             <!-- Logo -->
