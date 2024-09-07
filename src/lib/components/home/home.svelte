@@ -153,7 +153,7 @@
   <div class="w-full max-w-6xl mx-auto h-auto flex flex-col items-center justify-center py-20 px-6 lg:py-32 lg:px-12">
     <div class="flex flex-col lg:flex-row w-full lg:justify-between lg:items-center">
       <!-- Text Content -->
-      <div class="flex flex-col lg:w-1/2 mb-10 mt-[-60px] lg:mb-[10px] lg:text-left">
+      <div class="flex flex-col lg:w-1/2 mb-10 mt-[60px] lg:mb-[10px] lg:text-left">
         <h1 class="text-[#cecece] text-2xl lg:text-5xl mt-[2rem] font-bold leading-tight">
           Transformasi Merek Anda dengan Sentuhan Desain Grafis yang Memukau!
         </h1>
