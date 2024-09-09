@@ -81,23 +81,46 @@
 
     /* Padding untuk header dan elemen lain */
 .header {
-    padding: 23px 0.1rem; /* Padding default */
+    padding: 10px 0.1rem; /* Padding default */
     transition: padding 0.3s ease; /* Transisi padding */
 }
 
 .header.scrolled {
-    padding: 0.5vh 0.2rem; /* Padding saat scroll lebih kecil */
+    padding: 0.1vh 0.2rem; /* Padding saat scroll lebih kecil */
 }
 
 /* Padding untuk div utama agar konsisten dengan header */
 .bg-padding {
-    padding: 60px 0.2rem; /* Padding default sama dengan header */
+    padding: 10px; /* Padding default sama dengan header */
     /* Responsif */
     @media (min-width: 768px) {
-        padding: 10vh 2rem; /* Contoh padding untuk perangkat lebih besar */
+        padding: 8vh 1rem; /* Contoh padding untuk perangkat lebih besar */
     }
 }
 
+@media (max-width: 1024px) {
+        .header {
+            padding: 20px; /* Padding untuk laptop */
+        }
+        
+        .bg-padding {
+            padding: 68px; /* Padding lebih kecil untuk laptop */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header {
+            padding: 4px 0.5rem; /* Padding lebih kecil untuk ponsel */
+        }
+
+        .bg-padding {
+            padding: 40px 0.5rem; /* Padding lebih kecil untuk ponsel */
+        }
+
+        .dropdown-menu {
+            width: 20rem; /* Lebar dropdown menu untuk ponsel */
+        }
+    }
 
 </style>
 
