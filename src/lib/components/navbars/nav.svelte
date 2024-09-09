@@ -98,7 +98,7 @@
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
         .header {
             padding: 20px; /* Padding untuk laptop */
         }
@@ -161,7 +161,7 @@
                 </button>
                 <!-- Dropdown menu for mobile -->
                 <div class={`absolute top-full right-0 mt-2 w-48 bg-white shadow-lg rounded-lg transition-transform duration-300 ease-in-out transform ${isMenuOpen ? 'show' : 'hide'} dropdown-menu`}>
-                    <a href="#home" class="block px-4 py-2 text-sm text-black hover:bg-gray-200">Home</a>
+                                <a href="#home" class="block px-4 py-2 text-sm text-black hover:bg-gray-200">Home</a>
                     <a href="#about" class="block px-4 py-2 text-sm text-black hover:bg-gray-200">About Us</a>
                     <a href="#portfolio" class="block px-4 py-2 text-sm text-black hover:bg-gray-200">Portfolio</a>
                     <a href="#contact" class="block px-4 py-2 text-sm text-black hover:bg-gray-200">Contact</a>
