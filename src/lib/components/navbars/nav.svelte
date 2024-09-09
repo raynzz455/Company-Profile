@@ -98,7 +98,7 @@
     }
 }
 
-@media (max-width: 2240px) {
+@media (max-width: 2560px) {
         .header {
             padding: 20px; /* Padding untuk laptop */
         }
