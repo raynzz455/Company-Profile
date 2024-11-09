@@ -4,7 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'lato': ['Lato', 'sans-serif'],
+        'ubuntu' : [' "Ubuntu"' , 'sans-serif;'] ,
+        "Kanit" : ['"Kanit"', 'sans-serif'],
+        "roboto" : ['"Roboto"', 'sans-serif']
       },
     }
   },
