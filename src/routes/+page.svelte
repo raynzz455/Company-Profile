@@ -19,6 +19,16 @@
       interval: 2500,
     }).mount();
   });
+  const clientImages = [
+    "logo2.png",
+    "logo3.png",
+    "logo4.png",
+    "logo5.png",
+    "logo6.png",
+    "logo7.png",
+    "logo8.png",
+    "logo9.png",
+  ];
 
   export let data: {
     PortofolioImages: string[];
@@ -50,27 +60,31 @@
     const navbar = document.getElementById("navbar");
     if (!navbar) return;
 
+    // Mendefinisikan tinggi navbar untuk mobile dan desktop
     const defaultHeightMobile = "70px";
     const scrolledHeightMobile = "55px";
     const defaultHeightDesktop = "100px";
     const scrolledHeightDesktop = "70px";
-    navbar.style.height = defaultHeightMobile;
+
+    const isMobile = window.innerWidth < 768;
+    navbar.style.height = isMobile ? defaultHeightMobile : defaultHeightDesktop;
 
     const handleScroll = () => {
       if (window.scrollY > 20) {
-        navbar.style.height =
-          window.innerWidth < 768
-            ? scrolledHeightMobile
-            : scrolledHeightDesktop;
+        navbar.style.height = isMobile
+          ? scrolledHeightMobile
+          : scrolledHeightDesktop;
         navbar.style.boxShadow = "0 2px 10px black";
       } else {
-        navbar.style.height =
-          window.innerWidth < 768 ? defaultHeightMobile : defaultHeightDesktop;
+        navbar.style.height = isMobile
+          ? defaultHeightMobile
+          : defaultHeightDesktop;
         navbar.style.boxShadow = "none";
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -82,7 +96,7 @@
   <!-- Navbar -->
   <nav id="navbar">
     <div
-      class="container flex flex-row justify-between items-center px-4 md:px-9 md:w-[1000px] h-full w-full"
+      class="container flex flex-row justify-between items-center px-4 sm:px-9 sm:w-[1000px] h-full w-full"
     >
       <!-- Logo -->
       <div class="flex items-center h-[54px] w-[99px] md:h-[]">
@@ -483,27 +497,27 @@
   </div>
   <!-- Comennt List Testimonial -->
   <div class="flex justify-center mt-[50px]">
-    <div class="splide w-[500px] pb-10">
+    <div class="splide w-full sm:w-[600px] pb-10">
       <div class="splide__track">
         <ul class="splide__list border">
           {#each data.comments as comment}
             <li class="splide__slide flex justify-center items-center p-5">
               <div
-                class="bg-orange-500 text-white rounded-lg shadow-lg p-6 transform transition-transform duration-300 hover:-translate-y-3 relative mx-3 max-w-md w-full h-[200px] flex flex-col justify-between"
+                class="bg-orange-500 text-white rounded-lg shadow-lg p-6 transform transition-transform duration-300 hover:-translate-y-3 relative sm:max-w-md w-[350px] sm:w-[500px] h-[200px] flex flex-col justify-between"
               >
                 <div class="text-lg mb-4 flex-grow text-center font-Kanit">
-                  <p>"{comment.komentar}"</p>
+                  <p>"{comment.komentar}."</p>
                 </div>
                 <div
-                  class="flex flex-col items-center justify-center mt-1 font-Kanit"
+                  class="flex flex-col items-center justify-center pb-3 sm:pb-0 sm: font-Kanit text-center"
                 >
-                  <p class="text-base text-center">{comment.nama_customer}</p>
-                  <p class="text-gray-200 text-xs text-center">
+                  <p class="text-base">{comment.nama_customer}</p>
+                  <p class="text-xs">
                     {comment.keterangan_customer}
                   </p>
                 </div>
                 <span
-                  class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-5 h-5 bg-orange-500 rotate-45"
+                  class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-5 h-5 bg-orange-500 rotate-45 -z-10"
                 ></span>
               </div>
             </li>
@@ -513,17 +527,103 @@
     </div>
   </div>
   <!-- Near Footer -->
-  <div class="text-center py-8 px-4 bg-gray-100 text-gray-800">
-    <h2 class="text-2xl font-bold mb-4">Kami Adalah Desainer Terbaik Yang Tak Perlu Diragukan Lagi!</h2>
-    <p class="text-base mb-4">Masih bingung? Langsung konsultasi secara GRATIS oleh tim TUAIDE.</p>
-    <a 
-      href="https://wa.me/+628151852575" 
-      target="_blank" 
+  <div class="text-center py-8 px-4 bg-gray-100 font-Kanit">
+    <h2 class="text-2xl sm:text-3xl font-semibold mb-4">
+      Kami Adalah Desainer Terbaik Yang Tak Perlu Diragukan Lagi!
+    </h2>
+    <p class="text-base font-light mb-4">
+      Masih bingung? Langsung konsultasi secara <span class="font-bold"
+        >GRATIS</span
+      > oleh tim TUAIDE.
+    </p>
+    <a
+      href="https://wa.me/+628151852575"
+      target="_blank"
       class="bg-green-500 text-white py-2 px-4 rounded-full shadow-lg flex items-center justify-center mx-auto max-w-xs transition-colors duration-300 hover:bg-green-700"
     >
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-7 h-7 mr-2">
-      <span class="font-bold text-sm">Hubungi Kami</span>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WhatsApp"
+        class="w-7 h-7 mr-2"
+      />
+      <span class="font-medium text-sm">Hubungi Kami</span>
     </a>
+  </div>
+  <div
+    class="my-[20px] flex flex-col justify-center items-center bg-white font-Kanit"
+  >
+    <h2 class="text-2xl sm:text-3xl font-semibold mb-4">Our Clients</h2>
+
+    <!-- Kontainer flex yang membungkus gambar-gambar dalam dua baris -->
+    <div class="max-w-[1000px] flex flex-wrap justify-center gap-4">
+      {#each clientImages as image}
+        <img
+          src={`/images/clients/${image}`}
+          alt="Logo Clients"
+          class="w-1/4 max-w-[250px] max-h-[150px] object-contain"
+        />
+      {/each}
+    </div>
+  </div>
+  <!-- Footer -->
+  <div
+    class="w-full px-4 sm:px-9 bg-[#0a0a0a] py-5 sm:py-0 sm:h-[300px] flex items-center justify-center"
+  >
+    <div
+      class="w-full sm:w-[1000px] flex flex-row items-center justify-between"
+    >
+      <div
+        class="flex text-white flex-1 h-[200px] sm:h-[250px]text-center font-Kanit"
+      >
+        <div class="flex flex-col ml-4 text-left">
+          <div class="p-2 mb-3">
+            <p>Nav Menu</p>
+            <span class="block w-full h-[2px] bg-white mt-1"></span>
+          </div>
+          <div class="p-2">
+            <p>About</p>
+            <p>Portofolio</p>
+            <p>Contact</p>
+          </div>
+          <div>
+            <a
+              href="https://www.instagram.com/tuaide_id?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              class="text-white flex flex-row items-center px-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                width="20"
+                height="20"
+                viewBox="0 0 26 26"
+                class="mr-2"
+                style="fill:#FFFFFF;"
+              >
+                <path
+                  d="M 7.546875 0 C 3.390625 0 0 3.390625 0 7.546875 L 0 18.453125 C 0 22.609375 3.390625 26 7.546875 26 L 18.453125 26 C 22.609375 26 26 22.609375 26 18.453125 L 26 7.546875 C 26 3.390625 22.609375 0 18.453125 0 Z M 7.546875 2 L 18.453125 2 C 21.527344 2 24 4.46875 24 7.546875 L 24 18.453125 C 24 21.527344 21.53125 24 18.453125 24 L 7.546875 24 C 4.472656 24 2 21.53125 2 18.453125 L 2 7.546875 C 2 4.472656 4.46875 2 7.546875 2 Z M 20.5 4 C 19.671875 4 19 4.671875 19 5.5 C 19 6.328125 19.671875 7 20.5 7 C 21.328125 7 22 6.328125 22 5.5 C 22 4.671875 21.328125 4 20.5 4 Z M 13 6 C 9.144531 6 6 9.144531 6 13 C 6 16.855469 9.144531 20 13 20 C 16.855469 20 20 16.855469 20 13 C 20 9.144531 16.855469 6 13 6 Z M 13 8 C 15.773438 8 18 10.226563 18 13 C 18 15.773438 15.773438 18 13 18 C 10.226563 18 8 15.773438 8 13 C 8 10.226563 10.226563 8 13 8 Z"
+                ></path>
+              </svg>
+              <div>@Tuaide_id</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex justify-center flex-1 sm:w-[200px] h-[200px] sm:h-[250px]"
+      >
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.4901064982632!2d106.76732737604503!3d-6.585835493407773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c4ff9cab608f%3A0x2486a89bdd9f4d68!2sJl.%20Wijaya%20Kusuma%20No.11%2C%20RT.04%2FRW.12%2C%20Loji%2C%20Kec.%20Bogor%20Bar.%2C%20Kota%20Bogor%2C%20Jawa%20Barat%2016117!5e0!3m2!1sid!2sid!4v1731210245890!5m2!1sid!2sid"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Tuaide Company House"
+        ></iframe>
+      </div>
+    </div>
   </div>
 </div>
 
