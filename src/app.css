@@ -10,3 +10,17 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (forced-colors: active) {
+  div {
+    background-color: black;
+    color: white;
+  }
+  body {
+    background-color: black;
+    color: white;
+  }
+  p {
+    background-color: black;
+    color: white;
+  }
+}

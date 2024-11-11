@@ -5,6 +5,7 @@
   import { goto } from "$app/navigation";
   import Splide from "@splidejs/splide";
   import "@splidejs/splide/dist/css/splide.min.css";
+  import { fly } from 'svelte/transition'; 
 
   let splide;
 
@@ -90,6 +91,10 @@
       window.removeEventListener("scroll", handleScroll);
     };
   });
+  let isOpen = false;
+  const toggleMenu = () => {
+    isOpen = !isOpen;
+  };
 </script>
 
 <div class="w-auto h-auto main-content overflow-x-hidden">
@@ -128,6 +133,50 @@
           >Contact</a
         >
       </div>
+      <div class="md:hidden flex items-center">
+        <button on:click={toggleMenu} class=" focus:outline-none">
+          <!-- Ikon Burger (3 garis horizontal) -->
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Menu yang ditampilkan ketika isOpen = true -->
+      {#if isOpen}
+        <div
+          class="flex flex-col items-center space-y-4 absolute bg-black bg-opacity-75 top-full left-0 w-full py-4 z-40"
+          in:fly={{ x: -50, duration: 300 }}
+          out:fly={{ x: -50, duration: 300 }}
+        >
+          <a href="#home" class="font-Montserrat font-medium text-lg text-white"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="font-Montserrat font-medium text-lg text-white">About</a
+          >
+          <a
+            href="#portfolio"
+            class="font-Montserrat font-medium text-lg text-white">Portfolio</a
+          >
+          <a
+            href="#contact"
+            class="font-Montserrat font-medium text-lg text-white">Contact</a
+          >
+        </div>
+      {/if}
     </div>
   </nav>
 
@@ -191,7 +240,7 @@
         axis: null,
         reset: true,
       }}
-      class="ImagesContent satu flex flex-col justify-center items-center relative border-1 border-white md:border-0 h-full w-screen md:h-[420px] md:w-[25%] hover:z-20 bg-yellow-300"
+      class="ImagesContent satu flex flex-col justify-center items-center relative md:border-0 h-full w-screen md:h-[420px] md:w-[25%] hover:z-20 bg-yellow-300"
     >
       <div class="absolute inset-0 bg-black opacity-60"></div>
       <div
@@ -234,7 +283,7 @@
         axis: null,
         reset: true,
       }}
-      class="ImagesContent dua flex flex-col justify-center items-center relative border-1 border-white md:border-0 h-full w-screen md:h-[420px] md:w-[25%] hover:z-20 bg-yellow-300"
+      class="ImagesContent dua flex flex-col justify-center items-center relative md:border-0 h-full w-screen md:h-[420px] md:w-[25%] hover:z-20 bg-yellow-300"
     >
       <div class="absolute inset-0 bg-black opacity-60"></div>
       <div
@@ -277,7 +326,7 @@
         axis: null,
         reset: true,
       }}
-      class="ImagesContent tiga flex flex-col justify-center items-center relative border-1 border-white md:border-0 h-full w-screen md:h-[420px] md:w-[25%] hover:z-20 bg-yellow-300"
+      class="ImagesContent tiga flex flex-col justify-center items-center relative md:border-0 h-full w-screen md:h-[420px] md:w-[25%] hover:z-20 bg-yellow-300"
     >
       <div class="absolute inset-0 bg-black opacity-60"></div>
       <div
@@ -320,7 +369,7 @@
         axis: null,
         reset: true,
       }}
-      class="ImagesContent empat flex flex-col justify-center items-center relative border-1 border-white md:border-0 h-full w-screen md:h-[420px] md:w-[25%] hover:z-20 bg-yellow-300"
+      class="ImagesContent empat flex flex-col justify-center items-center relative md:border-0 h-full w-screen md:h-[420px] md:w-[25%] hover:z-20 bg-yellow-300"
     >
       <div class="absolute inset-0 bg-black opacity-60"></div>
       <div
