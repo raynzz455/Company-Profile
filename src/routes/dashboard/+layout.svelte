@@ -20,7 +20,6 @@
   }
 </script>
 
-<header class="justify-content-center">
   <nav
     class="mx-auto h-[50px] border-b flex items-center justify-between px-4 sm:max-w-[1000px] sm:min-h-[80px] font-Kanit"
   >
@@ -56,7 +55,7 @@
         >
           <a
             href="/dashboard"
-            class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Home</a
+            class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Dashboard</a
           >
           <button
             on:click={logout}
@@ -71,7 +70,4 @@
       <button on:click={logout} class="text-black">Logout</button>
     </div>
   </nav>
-</header>
-<main>
   <slot />
-</main>

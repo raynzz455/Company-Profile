@@ -61,7 +61,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    font-size: 2rem; 
+    font-size: 1.5rem; 
     padding: 16px; 
     text-align: center; 
   }
@@ -109,7 +109,7 @@
       >
         <div class="relative w-full bg-white shadow-[5px_5px_0px_black] border-2 border-black rounded-lg">
           <div class="h-[200px] md:h-[260px]">
-            <p class="testimonial-text font-bold">Testimoni</p>
+            <p class="testimonial-text font-bold">Testimoni Comments</p>
           </div>
         </div>
       </button>

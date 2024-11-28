@@ -95,7 +95,7 @@
   });
 </script>
 
-<div class="bg-white max-h-screen w-screen sm:max-w-[1000px] mx-auto">
+<div class="bg-white max-h-screen sm:max-w-[1000px] mx-auto">
   <p class="text-left ml-5 sm:ml-6 text-sm md:text-lg font-medium uppercase my-4">Portofolio</p>
 
   <div class="max-h-[90vh] w-full">
@@ -114,7 +114,7 @@
           <input type="checkbox" class="mr-2" id="checkbox-select" on:change={handleCheckboxChange}>
           <label for="checkbox-select">SELECT</label>
         </div>
-        <form method="post" enctype="multipart/form-data" class="flex relative sm:hidden items-center justify-center w-8 h-8 mt-4 rounded-full bg-[#f28928] hover:bg-[#c97b31] text-white">
+        <form method="post" enctype="multipart/form-data" class="flex relative sm:hidden items-center justify-center w-8 h-8 mt-4 mr-2 rounded-full bg-[#f28928] hover:bg-[#c97b31] text-white">
           <input type="hidden" name="folder" value={selectedFolder} />
           <button class="w-full h-full">
             <input type="file" class="absolute opacity-0 w-full h-full cursor-pointer" name="file" on:change={handleFileChange} />

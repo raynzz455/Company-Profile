@@ -35,8 +35,8 @@
   }
 </script>
 
-<body class="h-screen w-screen">
-  <div class="content w-full max-w-[90vw] sm:max-w-[1000px] max-h-[90vh] mx-auto font-ubuntu">
+<body class="h-screen flex justify-center">
+  <div class="content w-full max-w-[90vw] sm:max-w-[1000px] max-h-[90vh] font-ubuntu">
     <div
       class="w-full h-[60px] mx-auto rounded-tl-2xl rounded-tr-2xl flex justify-between items-center"
     >
