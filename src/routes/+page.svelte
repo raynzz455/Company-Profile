@@ -554,7 +554,7 @@
               <div
                 class="bg-orange-500 text-white rounded-lg shadow-lg p-6 transform transition-transform duration-300 hover:-translate-y-3 relative sm:max-w-md w-[350px] sm:w-[500px] h-[200px] flex flex-col justify-between"
               >
-                <div class="text-lg mb-4 flex-grow text-center font-Kanit">
+                <div class=" text-base mb-4 flex-grow text-center font-Kanit">
                   <p>"{comment.komentar}."</p>
                 </div>
                 <div
@@ -576,7 +576,7 @@
     </div>
   </div>
   <!-- Near Footer -->
-  <div class="text-center py-8 px-4 bg-gray-100 font-Kanit">
+  <div class="text-center py-10 mt-4 px-4 bg-gray-100 font-Kanit">
     <h2 class="text-2xl sm:text-3xl font-semibold mb-4">
       Kami Adalah Desainer Terbaik Yang Tak Perlu Diragukan Lagi!
     </h2>
@@ -601,15 +601,15 @@
   <div
     class="my-[20px] flex flex-col justify-center items-center bg-white font-Kanit"
   >
-    <h2 class="text-2xl sm:text-3xl font-semibold mb-4">Our Clients</h2>
+    <h2 class="text-2xl sm:text-3xl font-semibold my-4">Our Clients</h2>
 
     <!-- Kontainer flex yang membungkus gambar-gambar dalam dua baris -->
-    <div class="max-w-[1000px] flex flex-wrap justify-center gap-4">
+    <div class="max-w-[1000px] flex flex-wrap justify-center gap-5">
       {#each clientImages as image}
         <img
           src={`/images/clients/${image}`}
           alt="Logo Clients"
-          class="w-1/4 max-w-[250px] max-h-[150px] object-contain"
+          class="w-1/4 max-w-[210px] max-h-[120px] object-contain"
         />
       {/each}
     </div>
