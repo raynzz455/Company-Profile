@@ -23,12 +23,7 @@
       body: formData,
     });
     if (response.ok) {
-      if (response.headers.get("Content-Type")?.includes("application/json")) {
-        const updatedData = await response.json();
-        data.comments.push(updatedData.comment);
-      } else {
-        console.error("Invalid response format");
-      }
+      
       showCreateForm = false;
       Swal.fire({
         title: "Success!",
@@ -55,10 +50,7 @@
     });
 
     if (response.ok) {
-      const updatedData = await fetch("/dashboard/testimoni");
-      const result = await updatedData.json();
-      data.comments = result.comments;
-
+    
       editingComment = null;
       Swal.fire({
         title: "Updated!",
@@ -87,9 +79,9 @@
     });
 
     if (response.ok) {
-      const updatedData = await fetch("/dashboard/testimoni");
-      const result = await updatedData.json();
-      data.comments = result.comments;
+      // const updatedData = await fetch("/dashboard/testimoni");
+      // const result = await updatedData.json();
+      // data.comments = result.comments;
 
       Swal.fire({
         title: "Deleted!",
@@ -121,9 +113,9 @@
   }
 </script>
 
-<body class="h-screen flex justify-center">
+<!-- <body class="h-screen flex justify-center"> -->
   <div
-    class="content w-full max-w-[90vw] sm:max-w-[1000px] max-h-[90vh] font-ubuntu"
+    class="content w-full max-w-[90vw] sm:max-w-[1000px] max-h-[90vh] font-ubuntu mx-auto"
   >
     <div
       class="w-full h-[60px] mx-auto rounded-tl-2xl rounded-tr-2xl flex justify-between items-center"
@@ -253,4 +245,4 @@
       </div>
     {/if}
   </div>
-</body>
+<!-- </body> -->
