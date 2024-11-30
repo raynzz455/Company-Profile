@@ -43,23 +43,50 @@ export const actions: Actions = {
       nama_customer = formData.get('nama_customer') as string | null;
       komentar = formData.get('komentar') as string | null;
       keterangan_customer = formData.get('keterangan_customer') as string || '';
-      if (method === 'PUT') {
+      if (method === 'PUT' || method === 'DELETE') {
         id = formData.get('id') as string | null;
       }
     }
 
-    if (!nama_customer || !komentar) {
+    if (method !== 'DELETE' && (!nama_customer || !komentar)) {
       return {
         status: 400,
+        headers: { 'Content-Type': 'application/json' },
         body: { message: 'Nama customer dan komentar wajib diisi.' }
       };
     }
 
     try {
+      if (method === 'POST') {
+        const { data, error: insertError } = await supabase
+          .from('customer_comments')
+          .insert([{ nama_customer, komentar, keterangan_customer }])
+          .select();
+
+        if (insertError) {
+          console.error('Error inserting comment:', insertError);
+          return {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+            body: { message: 'Gagal menambahkan komentar.' }
+          };
+        }
+
+        return {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+          body: {
+            message: 'Komentar berhasil ditambahkan!',
+            comment: data[0]
+          }
+        };
+      }
+
       if (method === 'PUT') {
         if (!id) {
           return {
             status: 400,
+            headers: { 'Content-Type': 'application/json' },
             body: { message: 'ID diperlukan untuk memperbarui komentar.' }
           };
         }
@@ -74,6 +101,7 @@ export const actions: Actions = {
           console.error('Error updating comment:', updateError);
           return {
             status: 500,
+            headers: { 'Content-Type': 'application/json' },
             body: { message: 'Gagal memperbarui komentar.' }
           };
         }
@@ -81,12 +109,14 @@ export const actions: Actions = {
         if (data.length === 0) {
           return {
             status: 404,
+            headers: { 'Content-Type': 'application/json' },
             body: { message: 'Komentar tidak ditemukan.' }
           };
         }
 
         return {
           status: 200,
+          headers: { 'Content-Type': 'application/json' },
           body: {
             message: 'Komentar berhasil diperbarui!',
             comment: data[0]
@@ -94,37 +124,48 @@ export const actions: Actions = {
         };
       }
 
-      if (method === 'POST') {
-        const { data, error: insertError } = await supabase
-          .from('customer_comments')
-          .insert([{ nama_customer, komentar, keterangan_customer }])
-          .select();
+      if (method === 'DELETE') {
+        if (!id) {
+          return {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+            body: { message: 'ID diperlukan untuk menghapus komentar.' }
+          };
+        }
 
-        if (insertError) {
-          console.error('Error inserting comment:', insertError);
+        const { error: deleteError } = await supabase
+          .from('customer_comments')
+          .delete()
+          .eq('id', id);
+
+        if (deleteError) {
+          console.error('Error deleting comment:', deleteError);
           return {
             status: 500,
-            body: { message: 'Gagal menambahkan komentar.' }
+            headers: { 'Content-Type': 'application/json' },
+            body: { message: 'Gagal menghapus komentar.' }
           };
         }
 
         return {
           status: 200,
+          headers: { 'Content-Type': 'application/json' },
           body: {
-            message: 'Komentar berhasil ditambahkan!',
-            comment: data[0]
+            message: 'Komentar berhasil dihapus!'
           }
         };
       }
 
       return {
         status: 405,
+        headers: { 'Content-Type': 'application/json' },
         body: { message: 'Metode tidak didukung.' }
       };
     } catch (error) {
       console.error('Unexpected error:', error);
       return {
         status: 500,
+        headers: { 'Content-Type': 'application/json' },
         body: { message: 'Terjadi kesalahan pada server.' }
       };
     }
