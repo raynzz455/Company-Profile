@@ -113,7 +113,6 @@
   }
 </script>
 
-<!-- <body class="h-screen flex justify-center"> -->
   <div
     class="content w-full max-w-[90vw] sm:max-w-[1000px] max-h-[90vh] font-ubuntu mx-auto"
   >
@@ -245,4 +244,3 @@
       </div>
     {/if}
   </div>
-<!-- </body> -->

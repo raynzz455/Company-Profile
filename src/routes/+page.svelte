@@ -544,8 +544,17 @@
       </div>
     </div>
   </div>
+  
   <!-- Comennt List Testimonial -->
-  <div class="flex justify-center mt-[50px]">
+  <div class="mx-auto justify-center text-center mt-10 w-full" id="#About">
+    <h1 class="text-2xl font-Kanit font-bold md:text-4xl">Testimoni</h1>
+    <p
+      class="mt-2 font-ubuntu font-medium text-[0.55rem] md:text-[0.9rem] md:mt-4"
+    >
+      Berikut ini adalah testimoni dari client kami yang telah kami layani:
+    </p>
+  </div>
+  <div class="flex justify-center mt-[10px]">
     <div class="splide w-full sm:w-[600px] pb-10">
       <div class="splide__track">
         <ul class="splide__list border">
