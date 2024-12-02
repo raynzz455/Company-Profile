@@ -18,7 +18,6 @@
         <button class="bg-[#f58927] hover:bg-[#f87c42] text-white font-bold py-2 px-4 rounded hover:rounded-3xl hover:px-6 hover:ml-2 hover:shadow-xl transition-all duration-300 ease-in-out focus:outline-none focus:shadow-outline">
           Login 
         </button>
-        <button formaction="?/signup" class="text-sm text-blue-500 hover:underline">Sign up</button>
       </div>
     </form>
   </div>
