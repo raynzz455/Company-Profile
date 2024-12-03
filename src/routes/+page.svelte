@@ -120,7 +120,7 @@
         <a
           href="#About"
           class="relative text-black hover:text-green-700 hover:border-b-2 border-green-700 py-1 group"
-          >About Us</a
+          >Our Service</a
         >
         <a
           href="#Portfolio"
