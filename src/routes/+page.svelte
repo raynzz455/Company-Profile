@@ -683,6 +683,11 @@
       </div>
     </div>
   </div>
+  <footer class="text-white py-4 bg-[#0a0a0a] font-Kanit">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Undimension. All rights reserved.</p>
+    </div>
+  </footer>    
 </div>
 
 <style>

@@ -121,7 +121,7 @@
     >
       <h2 class="text-lg font-bold">Daftar Komentar</h2>
       <button
-        class="bg-transparent text-black font-bold border-2 border-black py-2 px-3 rounded-full mt-2 hover:shadow-[4px_4px_0px_black] hover:-translate-x-1 hover:-translate-y-1 transition-all ease-in-out duration-300"
+        class="bg-transparent text-black font-bold border-2 border-black py-2 px-3 rounded-full mt-2 shadow-[5px_5px_0px_black] font-Kanit hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_black] transition-all ease-in-out"
         on:click={() => {
           showCreateForm = !showCreateForm;
         }}
