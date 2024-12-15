@@ -79,10 +79,6 @@
     });
 
     if (response.ok) {
-      // const updatedData = await fetch("/dashboard/testimoni");
-      // const result = await updatedData.json();
-      // data.comments = result.comments;
-
       Swal.fire({
         title: "Deleted!",
         text: "Comment successfully deleted!",
@@ -107,7 +103,7 @@
   function handleDelete(commentId: number) {
     deleteComment(commentId);
   }
-
+  
   function closeUpdateForm() {
     editingComment = null;
   }
