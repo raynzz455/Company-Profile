@@ -95,6 +95,22 @@
   const toggleMenu = () => {
     isOpen = !isOpen;
   };
+  function scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      // Dapatkan posisi elemen di dalam halaman
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+
+      // Tentukan offset berdasarkan ukuran layar (PC atau mobile)
+      const offset = window.innerWidth >= 768 ? 70 : 55;  // 70px untuk PC, 55px untuk mobile
+
+      // Scroll ke posisi elemen dengan offset
+      window.scrollTo({
+        top: elementPosition - offset,  // Mengurangi offset untuk mundur sedikit
+        behavior: 'smooth',  // Smooth scroll
+      });
+    }
+  }
 </script>
 
 <div class="w-auto h-auto main-content overflow-x-hidden">
@@ -112,25 +128,25 @@
       <div
         class="menu-navbar flex flex-row items-center space-x-4 font-Kanit font-medium text-[1rem] text-center"
       >
-        <a
-          href="#Home"
+        <button
+        on:click={() => scrollToSection('home')}
           class="relative text-black hover:text-green-600 hover:border-b-2 border-green-600 py-1 group"
-          >Home</a
+          >Home</button
         >
-        <a
-          href="#About"
+        <button
+        on:click={() => scrollToSection('our-service')}
           class="relative text-black hover:text-green-700 hover:border-b-2 border-green-700 py-1 group"
-          >Our Service</a
+          >Our Service</button          
         >
-        <a
-          href="#Portfolio"
+        <button
+        on:click={() => scrollToSection('portofolio')}
           class="relative text-black hover:text-orange-600 hover:border-b-2 border-orange-600 py-1 group"
-          >Portfolio</a
+          >Portofolio</button
         >
-        <a
-          href="#Contact"
+        <button
+        on:click={() => scrollToSection('contact')}
           class="relative text-black hover:text-orange-700 hover:border-b-2 border-orange-700 py-1 group"
-          >Contact</a
+          >Contact</button
         >
       </div>
       <div class="md:hidden flex items-center">
@@ -164,12 +180,12 @@
             >Home</a
           >
           <a
-            href="#about"
+            href="#our-service"
             class="font-Montserrat font-medium text-lg text-white">About</a
           >
           <a
             href="#portfolio"
-            class="font-Montserrat font-medium text-lg text-white">Portfolio</a
+            class="font-Montserrat font-medium text-lg text-white">Portofolio</a
           >
           <a
             href="#contact"
@@ -183,7 +199,7 @@
   <!-- Hero Section -->
   <div
     class="hero-section w-screen h-[105vh] md:h-[120vh] flex justify-center items-center relative"
-    id="#home"
+    id="home"
   >
     <div class="overlay absolute inset-0 bg-black opacity-50"></div>
     <div
@@ -211,7 +227,7 @@
   </div>
 
   <!-- Layanan Kami Section -->
-  <div class="mx-auto justify-center text-center m-14 w-full" id="#About">
+  <div class="mx-auto justify-center text-center pt-10 pb-10 w-full" id="our-service">
     <h1 class="text-2xl font-Kanit font-bold md:text-4xl">Layanan Kami</h1>
     <p
       class="mt-2 mb-5 font-ubuntu font-medium text-[0.55rem] md:text-[0.9rem] md:mt-4"
@@ -401,7 +417,7 @@
   </div>
   <!-- Portofolio Section -->
   <!-- Header Portofolio-->
-  <div class="w-full h-[120px] sm:h-[180px]" id="Portfolio">
+  <div class="w-full h-[120px] sm:h-[180px]" id="portofolio">
     <div class="text-center py-10">
       <h1 class="text-2xl font-Kanit font-bold md:text-4xl">Portofolio</h1>
       <p
@@ -546,7 +562,7 @@
   </div>
   
   <!-- Comennt List Testimonial -->
-  <div class="mx-auto justify-center text-center mt-10 w-full" id="#About">
+  <div class="mx-auto justify-center text-center mt-10 w-full">
     <h1 class="text-2xl font-Kanit font-bold md:text-4xl">Testimoni</h1>
     <p
       class="mt-2 font-ubuntu font-medium text-[0.55rem] md:text-[0.9rem] md:mt-4"
@@ -585,7 +601,7 @@
     </div>
   </div>
   <!-- Near Footer -->
-  <div class="text-center py-10 mt-4 px-4 bg-gray-100 font-Kanit">
+  <div class="text-center py-10 mt-4 px-4 bg-gray-100 font-Kanit" id="contact">
     <h2 class="text-2xl sm:text-3xl font-semibold mb-4">
       Kami Adalah Desainer Terbaik Yang Tak Perlu Diragukan Lagi!
     </h2>
