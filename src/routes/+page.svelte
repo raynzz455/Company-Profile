@@ -96,22 +96,17 @@
     isOpen = !isOpen;
   };
   function scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      // Dapatkan posisi elemen di dalam halaman
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset;
-
-      // Tentukan offset berdasarkan ukuran layar (PC atau mobile)
-      const offset = window.innerWidth >= 768 ? 70 : 55; // 70px untuk PC, 55px untuk mobile
-
-      // Scroll ke posisi elemen dengan offset
-      window.scrollTo({
-        top: elementPosition - offset, // Mengurangi offset untuk mundur sedikit
-        behavior: "smooth", // Smooth scroll
-      });
-    }
+  const element = document.getElementById(id);
+  if (element) {
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY;  
+    const offset = window.innerWidth >= 768 ? 70 : 55;
+    window.scrollTo({
+      top: elementPosition - offset, 
+      behavior: "smooth", 
+    });
   }
+}
+
 </script>
 
 <div class="w-auto h-auto main-content overflow-x-hidden">
