@@ -5,7 +5,7 @@
   import { goto } from "$app/navigation";
   import Splide from "@splidejs/splide";
   import "@splidejs/splide/dist/css/splide.min.css";
-  import { fly } from 'svelte/transition'; 
+  import { fly } from "svelte/transition";
 
   let splide;
 
@@ -99,15 +99,16 @@
     const element = document.getElementById(id);
     if (element) {
       // Dapatkan posisi elemen di dalam halaman
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
 
       // Tentukan offset berdasarkan ukuran layar (PC atau mobile)
-      const offset = window.innerWidth >= 768 ? 70 : 55;  // 70px untuk PC, 55px untuk mobile
+      const offset = window.innerWidth >= 768 ? 70 : 55; // 70px untuk PC, 55px untuk mobile
 
       // Scroll ke posisi elemen dengan offset
       window.scrollTo({
-        top: elementPosition - offset,  // Mengurangi offset untuk mundur sedikit
-        behavior: 'smooth',  // Smooth scroll
+        top: elementPosition - offset, // Mengurangi offset untuk mundur sedikit
+        behavior: "smooth", // Smooth scroll
       });
     }
   }
@@ -129,22 +130,22 @@
         class="menu-navbar flex flex-row items-center space-x-4 font-Kanit font-medium text-[1rem] text-center"
       >
         <button
-        on:click={() => scrollToSection('home')}
+          on:click={() => scrollToSection("home")}
           class="relative text-black hover:text-green-600 hover:border-b-2 border-green-600 py-1 group"
           >Home</button
         >
         <button
-        on:click={() => scrollToSection('our-service')}
+          on:click={() => scrollToSection("our-service")}
           class="relative text-black hover:text-green-700 hover:border-b-2 border-green-700 py-1 group"
-          >Our Service</button          
+          >Our Service</button
         >
         <button
-        on:click={() => scrollToSection('portofolio')}
+          on:click={() => scrollToSection("portofolio")}
           class="relative text-black hover:text-orange-600 hover:border-b-2 border-orange-600 py-1 group"
           >Portofolio</button
         >
         <button
-        on:click={() => scrollToSection('contact')}
+          on:click={() => scrollToSection("contact")}
           class="relative text-black hover:text-orange-700 hover:border-b-2 border-orange-700 py-1 group"
           >Contact</button
         >
@@ -176,20 +177,24 @@
           in:fly={{ x: -50, duration: 300 }}
           out:fly={{ x: -50, duration: 300 }}
         >
-          <a href="#home" class="font-Montserrat font-medium text-lg text-white"
-            >Home</a
+          <button
+            on:click={() => scrollToSection("home")}
+            class="font-Montserrat font-medium text-lg text-white">Home</button
           >
-          <a
-            href="#our-service"
-            class="font-Montserrat font-medium text-lg text-white">About</a
+          <button
+            on:click={() => scrollToSection("our-service")}
+            class="font-Montserrat font-medium text-lg text-white"
+            >Our Service</button
           >
-          <a
-            href="#portfolio"
-            class="font-Montserrat font-medium text-lg text-white">Portofolio</a
+          <button
+            on:click={() => scrollToSection("portofolio")}
+            class="font-Montserrat font-medium text-lg text-white"
+            >Portofolio</button
           >
-          <a
-            href="#contact"
-            class="font-Montserrat font-medium text-lg text-white">Contact</a
+          <button
+            on:click={() => scrollToSection("contact")}
+            class="font-Montserrat font-medium text-lg text-white"
+            >Contact</button
           >
         </div>
       {/if}
@@ -227,7 +232,10 @@
   </div>
 
   <!-- Layanan Kami Section -->
-  <div class="mx-auto justify-center text-center pt-10 pb-10 w-full" id="our-service">
+  <div
+    class="mx-auto justify-center text-center pt-10 pb-10 w-full"
+    id="our-service"
+  >
     <h1 class="text-2xl font-Kanit font-bold md:text-4xl">Layanan Kami</h1>
     <p
       class="mt-2 mb-5 font-ubuntu font-medium text-[0.55rem] md:text-[0.9rem] md:mt-4"
@@ -560,7 +568,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Comennt List Testimonial -->
   <div class="mx-auto justify-center text-center mt-10 w-full">
     <h1 class="text-2xl font-Kanit font-bold md:text-4xl">Testimoni</h1>
@@ -703,7 +711,7 @@
     <div class="container mx-auto text-center">
       <p>&copy; 2024 Undimension. All rights reserved.</p>
     </div>
-  </footer>    
+  </footer>
 </div>
 
 <style>
