@@ -35,9 +35,11 @@
     PortofolioImages: string[];
     folder: string;
     comments: {
+      id: string;
       komentar: string;
       nama_customer: string;
       keterangan_customer: string;
+      likes: number;
     }[];
   };
   function handleButtonClick(folderId: string) {
@@ -96,17 +98,34 @@
     isOpen = !isOpen;
   };
   function scrollToSection(id: string) {
-  const element = document.getElementById(id);
-  if (element) {
-    const elementPosition = element.getBoundingClientRect().top + window.scrollY;  
-    const offset = window.innerWidth >= 768 ? 70 : 55;
-    window.scrollTo({
-      top: elementPosition - offset, 
-      behavior: "smooth", 
-    });
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      const offset = window.innerWidth >= 768 ? 70 : 55;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: "smooth",
+      });
+    }
   }
-}
-
+  const addLike = async (commentId: string) => {
+    if (!commentId) {
+      console.error("Comment ID is missing");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("id", commentId);
+    const response = await fetch("", {
+      method: "POST",
+      body: formData,
+    });
+    if (!response.ok) {
+      console.error("Failed to add like");
+    } else {
+      console.log("Like added successfully");
+    }
+  };
 </script>
 
 <div class="w-auto h-auto main-content overflow-x-hidden">
@@ -580,22 +599,41 @@
           {#each data.comments as comment}
             <li class="splide__slide flex justify-center items-center p-5">
               <div
-                class="bg-orange-500 text-white rounded-lg shadow-lg p-6 transform transition-transform duration-300 hover:-translate-y-3 relative sm:max-w-md w-[350px] sm:w-[500px] h-[200px] flex flex-col justify-between"
+                class="bg-orange-500 text-white rounded-lg p-6 transition-all duration-300 hover:-translate-y-3 hover:h-[210px] relative w-[350px] sm:w-[500px] h-[200px] flex flex-col justify-between group"
               >
                 <div class=" text-base mb-4 flex-grow text-center font-Kanit">
                   <p>"{comment.komentar}."</p>
                 </div>
                 <div
-                  class="flex flex-col items-center justify-center pb-3 sm:pb-0 sm: font-Kanit text-center"
+                  class="flex flex-col items-center justify-center pb-3 sm:pb-0 sm: font-Kanit text-center transition-all duration-300 group-hover:-translate-y-3"
                 >
                   <p class="text-base">{comment.nama_customer}</p>
-                  <p class="text-xs">
-                    {comment.keterangan_customer}
-                  </p>
+                  <p class="text-xs">{comment.keterangan_customer}</p>
                 </div>
                 <span
                   class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-5 h-5 bg-orange-500 rotate-45 -z-10"
                 ></span>
+                <div>
+                  <button
+                    class="absolute bottom-0 end-0 p-5 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto"
+                    on:click={() => addLike(comment.id)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="size-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </li>
           {/each}
@@ -658,11 +696,15 @@
             <span class="block w-full h-[2px] bg-white mt-1"></span>
           </div>
           <div class="p-2 flex flex-col items-start">
-            <button on:click={() => scrollToSection("our-service")}>Our Service</button>
-            <button on:click={() => scrollToSection("portofolio")}>Portofolio</button>
+            <button on:click={() => scrollToSection("our-service")}
+              >Our Service</button
+            >
+            <button on:click={() => scrollToSection("portofolio")}
+              >Portofolio</button
+            >
             <button on:click={() => scrollToSection("contact")}>Contact</button>
           </div>
-          
+
           <div>
             <a
               href="https://www.instagram.com/tuaide_id?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
@@ -705,7 +747,12 @@
   </div>
   <footer class="text-white py-4 bg-[#0a0a0a] font-Kanit">
     <div class="container mx-auto text-center">
-      <p>&copy; 2024 <a href="https://www.instagram.com/undimension_project?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Undimension.</a> CV Tuai Dimensi Kreasi.</p>
+      <p>
+        &copy; 2024 <a
+          href="https://www.instagram.com/undimension_project?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          >Undimension.</a
+        > CV Tuai Dimensi Kreasi.
+      </p>
     </div>
   </footer>
 </div>
