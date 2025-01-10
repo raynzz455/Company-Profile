@@ -61,7 +61,6 @@ export const actions = {
         body: { error: 'Invalid comment ID' },
       };
     }
-    // Ambil jumlah likes saat ini
     const { data: existingData, error: fetchError } = await supabase
       .from('customer_comments')
       .select('likes')
@@ -76,8 +75,6 @@ export const actions = {
     }
 
     const currentLikes = existingData.likes || 0;
-
-    // Tambah jumlah likes
     const { error: updateError } = await supabase
       .from('customer_comments')
       .update({ likes: currentLikes + 1 })
