@@ -652,16 +652,17 @@
       <div
         class="flex text-white flex-1 h-[200px] sm:h-[250px]text-center font-Kanit"
       >
-        <div class="flex flex-col ml-4 text-left">
-          <div class="p-2 mb-3">
+        <div class="flex flex-col ml-4 text-left" id="navbar">
+          <div class="p-2 mb-1">
             <p>Nav Menu</p>
             <span class="block w-full h-[2px] bg-white mt-1"></span>
           </div>
-          <div class="p-2">
-            <p>About</p>
-            <p>Portofolio</p>
-            <p>Contact</p>
+          <div class="p-2 flex flex-col items-start">
+            <button on:click={() => scrollToSection("our-service")}>Our Service</button>
+            <button on:click={() => scrollToSection("portofolio")}>Portofolio</button>
+            <button on:click={() => scrollToSection("contact")}>Contact</button>
           </div>
+          
           <div>
             <a
               href="https://www.instagram.com/tuaide_id?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
@@ -704,7 +705,7 @@
   </div>
   <footer class="text-white py-4 bg-[#0a0a0a] font-Kanit">
     <div class="container mx-auto text-center">
-      <p>&copy; 2024 Undimension. All rights reserved.</p>
+      <p>&copy; 2024 Undimension. CV Tuai Dimensi Kreasi.</p>
     </div>
   </footer>
 </div>
