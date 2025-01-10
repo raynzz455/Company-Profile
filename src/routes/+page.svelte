@@ -705,7 +705,7 @@
   </div>
   <footer class="text-white py-4 bg-[#0a0a0a] font-Kanit">
     <div class="container mx-auto text-center">
-      <p>&copy; 2024 <a href="https://www.instagram.com/undimension_project?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="> Undimension.</a>CV Tuai Dimensi Kreasi.</p>
+      <p>&copy; 2024 <a href="https://www.instagram.com/undimension_project?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Undimension.</a> CV Tuai Dimensi Kreasi.</p>
     </div>
   </footer>
 </div>
